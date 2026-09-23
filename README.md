@@ -10,7 +10,7 @@ tells you which answers obey the identities and which do not.
 
 The confidence identity is **not our discovery**. It was established by
 **[Stanislav Yurin, "Is Jev confident?" (bernoulli.app, 18 September 2026)](https://bernoulli.app/confidence.html)**,
-from 1,000,164 live answers across 83,347 requests, at a cost of $7.08:
+from over a million live tests:
 
 ```
 C = (N * p_max - 1) / (N - 1)   ==   (p_max - 1/N) / (1 - 1/N)
@@ -22,7 +22,7 @@ normalization does not rescue it, and notes that Jev returns an expected score. 
 responded to that work on 20 September 2026.
 
 **[primeline.cc](https://primeline.cc/blog/typesafe-jev-pre-registered-test)** independently
-replicated it on 2,004 answers and added the monotonicity result: strict confidence versus
+replicated it on two jobs of 1,203 and 801 answers and added the monotonicity result: strict confidence versus
 top-probability reversals occur in 0.076% and 0.030% of pairs, none above a 0.02 gap.
 
 We derived the same identity independently, from 843 published artifacts with no API access,
@@ -53,10 +53,8 @@ obey."* Innocent explanations exist and should be checked first — deliberate r
 (`rounded.json` is named for it), an older model version, or a reimplementation. This tool
 reports deviation, not intent.
 
-**2. Jev reimplementations do not reproduce the identity.** Projects named after Jev
-(`Open-Jev`, `KaLM-Jev`) conform at **19/80 = 23.8%**. If you swapped one in expecting drop-in
-equivalence, your confidence values are on a different scale than the thresholds you calibrated
-against. That is a live miscalibration, not a theoretical one.
+**2. At least one "Jev-compatible" implementation uses a different confidence function.**
+See the census section below for the measured result and its limits.
 
 **3. Published Jev artifacts are not one population.** Conflating them produces a false number:
 
@@ -67,10 +65,10 @@ against. That is a live miscalibration, not a theoretical one.
 | reimplementations | third-party models named after Jev | 19/80 = 23.8% | 0 |
 | hand-authored fixtures / notes | written by a human or a generator | 115/296 = 38.9% | **121** |
 
-All 121 fabrication flags land in the hand-authored stratum. **Zero fire on vendor-channel or
-recorded responses.** The detector never misfires on real model output, which is what licenses
-trusting it. The all-in number across every file that merely mentions "jev" is 79.6% — misleading,
-do not quote it.
+Flags land in the hand-authored stratum and none fire on vendor-channel or recorded responses.
+⚠️ The flag counts in this table predate a correction to the detector (see the census section):
+`FRAC_COUPLED` now additionally requires an L1 violation, which removed a large share of them as
+chance coincidences. Treat the census numbers as current and these as historical.
 
 ## Ecosystem census (2026-09-23)
 
