@@ -13,7 +13,7 @@ import os as _os
 _HERE = _os.path.dirname(_os.path.abspath(__file__))
 _ROOT = _os.path.dirname(_HERE)
 CORPUS = _os.environ.get("JEV_CORPUS", _os.path.join(_ROOT, "corpus"))
-MANIFEST = _os.environ.get("JEV_MANIFEST", _os.path.join(_ROOT, "data", MANIFEST))
+MANIFEST = _os.environ.get("JEV_MANIFEST", _os.path.join(_ROOT, "data", "fetched.txt"))
 
 
 TOL_SUM  = 0.011   # allow 2-dp rounding across up to ~4 buckets
