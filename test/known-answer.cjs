@@ -164,6 +164,18 @@ console.log('\nKAT 6 -- non-categorical structures must be SKIPPED, not accused'
   const d = L.checkAnswer(L.findAnswers(round4)[0]);
   const l0 = d.checks.find((x) => x.law === 'L0');
   t('4-way 2dp rounding (sum 0.99) is within scaled L0 tolerance', l0.status === 'EXACT', `delta=${l0.delta.toFixed(3)} tol=${l0.tolerance}`);
+
+  // NanoJev arcade frames: multi-label with NO truth sibling, but two directions
+  // each > 0.5 -- the math-based signal must catch it.
+  const arcade = { action: 'south', collision: false, done: false, score: 3,
+    probabilities: { north: 0.84, east: 0.05, south: 0.83, west: 0.05 } };
+  const ac = L.findAnswers(arcade)[0];
+  t('arcade multi-label (2 probs > 0.5, no truth sibling) is multilabel', ac.structure === 'multilabel', `structure=${ac.structure}`);
+  t('arcade multi-label is SKIPPED', L.checkAnswer(ac).verdict === 'SKIP');
+
+  // Guard: a valid two-way categorical {0.5,0.5} must NOT be caught by the >0.5 rule.
+  const twoway = { choice: 'a', confidence: 0, probabilities: { a: 0.5, b: 0.5 } };
+  t('valid {0.5,0.5} stays categorical', L.findAnswers(twoway)[0].structure === 'categorical');
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

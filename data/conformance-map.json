@@ -1,63 +1,60 @@
 {
  "generated_utc": "2026-09-23",
- "method": "L0 probs sum to 1; L1 confidence=(p_top-1/n)/(1-1/n) [Yurin 2026]; L2 score=SUM(level*p)",
- "total_answers": 279842,
- "total_deviate": 8970,
- "repos_deviating": 51,
- "caveat": "FRAC_COUPLED flags predate a detector correction (see README); excluded from FABRICATION and reported separately as historical.",
+ "source": "census-v3, structure-aware checker (lib/laws.cjs, 42 KATs)",
+ "method": "L0 probs sum to 1 (n-scaled tol); L1 confidence=(p_top-1/n)/(1-1/n) [Yurin 2026]; L2 score=SUM(level*p). Only single-categorical answers scored; multi-label (>=2 probs>0.5 or multi-hot truth sibling) and batch (batch_size>1) SKIPPED.",
+ "aggregate": {
+  "categorical_answers": 275852,
+  "deviate": 4897,
+  "conform_pct": 98.2248
+ },
+ "classes": {
+  "DIFFERENT-LAW": 20,
+  "UNRESOLVED-STRUCTURE": 2,
+  "ROUNDING": 24
+ },
+ "caveats": [
+  "UNRESOLVED-STRUCTURE = probability vectors not summing to 1 that survive the structure filter; they concentrate in game/RL repos where outputs are plausibly multi-label. NOT characterized as fabrication without per-repo review.",
+  "laya-mps DIFFERENT-LAW independently re-verified on live repo: sum=1.000, systematic L1 gap mean 0.155 (normalised-entropy signature)."
+ ],
  "repos": [
-  {
-   "repo": "TianyuCodings/NanoJev",
-   "answers": 12850,
-   "deviate": 4898,
-   "deviate_pct": 38.1,
-   "class": "FABRICATION (probs!=1, L0)",
-   "max_delta": 2.5504,
-   "stars": 2103
-  },
   {
    "repo": "kavehmz/typesafe-playground",
    "answers": 7016,
-   "deviate": 1580,
-   "deviate_pct": 22.5,
-   "class": "DIFFERENT-LAW (L1 systematic)",
-   "max_delta": 0.17,
+   "deviate": 1540,
+   "deviate_pct": 21.9,
+   "class": "DIFFERENT-LAW",
    "stars": 13
+  },
+  {
+   "repo": "TianyuCodings/NanoJev",
+   "answers": 9098,
+   "deviate": 1156,
+   "deviate_pct": 12.7,
+   "class": "UNRESOLVED-STRUCTURE",
+   "stars": 2114
   },
   {
    "repo": "afshinm/laya-mps",
    "answers": 881,
    "deviate": 789,
    "deviate_pct": 89.6,
-   "class": "DIFFERENT-LAW (L1 systematic)",
-   "max_delta": 0.2405,
-   "stars": 16
+   "class": "DIFFERENT-LAW",
+   "stars": 17
   },
   {
    "repo": "wondertwins/jev-benchmark",
    "answers": 940,
-   "deviate": 540,
-   "deviate_pct": 57.4,
-   "class": "DIFFERENT-LAW (L1 systematic)",
-   "max_delta": 0.305,
+   "deviate": 539,
+   "deviate_pct": 57.3,
+   "class": "DIFFERENT-LAW",
    "stars": 6
-  },
-  {
-   "repo": "CompleteDotTech/paper-package",
-   "answers": 789,
-   "deviate": 264,
-   "deviate_pct": 33.5,
-   "class": "FABRICATION (probs!=1, L0)",
-   "max_delta": 3.99,
-   "stars": 1
   },
   {
    "repo": "valentynkit/jev-skip",
    "answers": 1306,
    "deviate": 156,
    "deviate_pct": 11.9,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.105,
+   "class": "ROUNDING",
    "stars": 4
   },
   {
@@ -65,26 +62,23 @@
    "answers": 145,
    "deviate": 139,
    "deviate_pct": 95.9,
-   "class": "DIFFERENT-LAW (L1 systematic)",
-   "max_delta": 0.2915,
+   "class": "DIFFERENT-LAW",
    "stars": 56
   },
   {
    "repo": "JoshuaSP/open-jev",
    "answers": 1228,
-   "deviate": 132,
-   "deviate_pct": 10.7,
-   "class": "DIFFERENT-LAW (L1 systematic)",
-   "max_delta": 0.1567,
-   "stars": 37
+   "deviate": 108,
+   "deviate_pct": 8.8,
+   "class": "DIFFERENT-LAW",
+   "stars": 38
   },
   {
    "repo": "RastislavDujava/jev-classification-prompting",
    "answers": 124,
-   "deviate": 51,
-   "deviate_pct": 41.1,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.0767,
+   "deviate": 47,
+   "deviate_pct": 37.9,
+   "class": "ROUNDING",
    "stars": 0
   },
   {
@@ -92,44 +86,31 @@
    "answers": 12908,
    "deviate": 47,
    "deviate_pct": 0.4,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.0217,
+   "class": "ROUNDING",
    "stars": 25
+  },
+  {
+   "repo": "CompleteDotTech/paper-package",
+   "answers": 566,
+   "deviate": 41,
+   "deviate_pct": 7.2,
+   "class": "UNRESOLVED-STRUCTURE",
+   "stars": 1
   },
   {
    "repo": "Alex314618-create/JevRev",
    "answers": 34,
    "deviate": 34,
    "deviate_pct": 100.0,
-   "class": "DIFFERENT-LAW (L1 systematic)",
-   "max_delta": 0.5333,
-   "stars": 181
+   "class": "DIFFERENT-LAW",
+   "stars": 210
   },
   {
    "repo": "MartinPuli/f1",
    "answers": 222621,
    "deviate": 33,
    "deviate_pct": 0.0,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.02,
-   "stars": 1
-  },
-  {
-   "repo": "etweisberg/jev-ui",
-   "answers": 46,
-   "deviate": 30,
-   "deviate_pct": 65.2,
-   "class": "DIFFERENT-LAW (L1 systematic)",
-   "max_delta": 0.1533,
-   "stars": 3
-  },
-  {
-   "repo": "nanami-0713/jev-resume-screening",
-   "answers": 50,
-   "deviate": 29,
-   "deviate_pct": 58.0,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.1467,
+   "class": "ROUNDING",
    "stars": 1
   },
   {
@@ -137,53 +118,63 @@
    "answers": 29,
    "deviate": 29,
    "deviate_pct": 100.0,
-   "class": "DIFFERENT-LAW (L1 systematic)",
-   "max_delta": 0.16,
+   "class": "DIFFERENT-LAW",
    "stars": 6
+  },
+  {
+   "repo": "etweisberg/jev-ui",
+   "answers": 46,
+   "deviate": 28,
+   "deviate_pct": 60.9,
+   "class": "DIFFERENT-LAW",
+   "stars": 3
   },
   {
    "repo": "robokrunch/jev-physical-ai",
    "answers": 600,
-   "deviate": 27,
-   "deviate_pct": 4.5,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.105,
+   "deviate": 23,
+   "deviate_pct": 3.8,
+   "class": "ROUNDING",
    "stars": 2
   },
   {
-   "repo": "finnhll/jev-eval",
-   "answers": 251,
-   "deviate": 19,
-   "deviate_pct": 7.6,
-   "class": "HISTORICAL-FLAG (FRAC_COUPLED, excluded)",
-   "max_delta": 0.0,
-   "stars": 0
+   "repo": "nanami-0713/jev-resume-screening",
+   "answers": 50,
+   "deviate": 22,
+   "deviate_pct": 44.0,
+   "class": "ROUNDING",
+   "stars": 1
   },
   {
    "repo": "PerryLink/llm-jev-laya-bench",
    "answers": 28,
    "deviate": 16,
    "deviate_pct": 57.1,
-   "class": "DIFFERENT-LAW (L1 systematic)",
-   "max_delta": 0.1913,
+   "class": "DIFFERENT-LAW",
    "stars": 0
-  },
-  {
-   "repo": "allebee/jevgrep",
-   "answers": 15,
-   "deviate": 15,
-   "deviate_pct": 100.0,
-   "class": "FABRICATION (probs!=1, L0)",
-   "max_delta": 62.55,
-   "stars": 1
   },
   {
    "repo": "cwhy/decision-injection-bench",
    "answers": 30,
    "deviate": 14,
    "deviate_pct": 46.7,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.0524,
+   "class": "ROUNDING",
+   "stars": 0
+  },
+  {
+   "repo": "finnhll/jev-eval",
+   "answers": 251,
+   "deviate": 14,
+   "deviate_pct": 5.6,
+   "class": "DIFFERENT-LAW",
+   "stars": 0
+  },
+  {
+   "repo": "rbalch/typesafeai-review",
+   "answers": 37,
+   "deviate": 12,
+   "deviate_pct": 32.4,
+   "class": "DIFFERENT-LAW",
    "stars": 0
   },
   {
@@ -191,26 +182,15 @@
    "answers": 72,
    "deviate": 12,
    "deviate_pct": 16.7,
-   "class": "DIFFERENT-LAW (L1 systematic)",
-   "max_delta": 0.2509,
-   "stars": 281
-  },
-  {
-   "repo": "rbalch/typesafeai-review",
-   "answers": 37,
-   "deviate": 12,
-   "deviate_pct": 32.4,
-   "class": "DIFFERENT-LAW (L1 systematic)",
-   "max_delta": 0.4667,
-   "stars": 0
+   "class": "DIFFERENT-LAW",
+   "stars": 288
   },
   {
    "repo": "edgardcham/huncho",
    "answers": 20,
    "deviate": 11,
    "deviate_pct": 55.0,
-   "class": "DIFFERENT-LAW (L1 systematic)",
-   "max_delta": 0.305,
+   "class": "DIFFERENT-LAW",
    "stars": 1
   },
   {
@@ -218,17 +198,7 @@
    "answers": 31,
    "deviate": 11,
    "deviate_pct": 35.5,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.0778,
-   "stars": 0
-  },
-  {
-   "repo": "finrod21/jev-transaction-guard",
-   "answers": 56,
-   "deviate": 10,
-   "deviate_pct": 17.9,
-   "class": "DIFFERENT-LAW (L1 systematic)",
-   "max_delta": 0.1775,
+   "class": "ROUNDING",
    "stars": 0
   },
   {
@@ -236,8 +206,15 @@
    "answers": 2682,
    "deviate": 9,
    "deviate_pct": 0.3,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.0217,
+   "class": "ROUNDING",
+   "stars": 0
+  },
+  {
+   "repo": "finrod21/jev-transaction-guard",
+   "answers": 56,
+   "deviate": 9,
+   "deviate_pct": 16.1,
+   "class": "DIFFERENT-LAW",
    "stars": 0
   },
   {
@@ -245,8 +222,7 @@
    "answers": 16,
    "deviate": 7,
    "deviate_pct": 43.8,
-   "class": "DIFFERENT-LAW (L1 systematic)",
-   "max_delta": 0.305,
+   "class": "DIFFERENT-LAW",
    "stars": 1
   },
   {
@@ -254,8 +230,7 @@
    "answers": 12,
    "deviate": 6,
    "deviate_pct": 50.0,
-   "class": "DIFFERENT-LAW (L1 systematic)",
-   "max_delta": 0.305,
+   "class": "DIFFERENT-LAW",
    "stars": 0
   },
   {
@@ -263,8 +238,7 @@
    "answers": 23,
    "deviate": 5,
    "deviate_pct": 21.7,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.115,
+   "class": "ROUNDING",
    "stars": 0
   },
   {
@@ -272,8 +246,7 @@
    "answers": 8,
    "deviate": 5,
    "deviate_pct": 62.5,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.1067,
+   "class": "ROUNDING",
    "stars": 0
   },
   {
@@ -281,8 +254,7 @@
    "answers": 2528,
    "deviate": 5,
    "deviate_pct": 0.2,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.0225,
+   "class": "ROUNDING",
    "stars": 3
   },
   {
@@ -290,8 +262,7 @@
    "answers": 11,
    "deviate": 5,
    "deviate_pct": 45.5,
-   "class": "DIFFERENT-LAW (L1 systematic)",
-   "max_delta": 0.305,
+   "class": "DIFFERENT-LAW",
    "stars": 25
   },
   {
@@ -299,8 +270,7 @@
    "answers": 4,
    "deviate": 4,
    "deviate_pct": 100.0,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.1,
+   "class": "ROUNDING",
    "stars": 1
   },
   {
@@ -308,17 +278,15 @@
    "answers": 5,
    "deviate": 3,
    "deviate_pct": 60.0,
-   "class": "FABRICATION (probs!=1, L0)",
-   "max_delta": 0.298,
-   "stars": 34
+   "class": "DIFFERENT-LAW",
+   "stars": 38
   },
   {
    "repo": "ismaelsoilet/jev-harness",
    "answers": 3,
    "deviate": 3,
    "deviate_pct": 100.0,
-   "class": "DIFFERENT-LAW (L1 systematic)",
-   "max_delta": 0.4967,
+   "class": "DIFFERENT-LAW",
    "stars": 6
   },
   {
@@ -326,8 +294,7 @@
    "answers": 7,
    "deviate": 2,
    "deviate_pct": 28.6,
-   "class": "DIFFERENT-LAW (L1 systematic)",
-   "max_delta": 0.25,
+   "class": "DIFFERENT-LAW",
    "stars": 82
   },
   {
@@ -335,8 +302,7 @@
    "answers": 2,
    "deviate": 2,
    "deviate_pct": 100.0,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.125,
+   "class": "ROUNDING",
    "stars": 12
   },
   {
@@ -344,44 +310,23 @@
    "answers": 2,
    "deviate": 2,
    "deviate_pct": 100.0,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.1455,
+   "class": "ROUNDING",
    "stars": 12
-  },
-  {
-   "repo": "inanna-malick/jev-dsl",
-   "answers": 33,
-   "deviate": 2,
-   "deviate_pct": 6.1,
-   "class": "HISTORICAL-FLAG (FRAC_COUPLED, excluded)",
-   "max_delta": 0.0,
-   "stars": 7
   },
   {
    "repo": "GodsBoy/jev-agent-skill-router",
    "answers": 622,
    "deviate": 1,
    "deviate_pct": 0.2,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.02,
+   "class": "ROUNDING",
    "stars": 17
-  },
-  {
-   "repo": "Hangzhi/diffusion-jev-sglang",
-   "answers": 9,
-   "deviate": 1,
-   "deviate_pct": 11.1,
-   "class": "HISTORICAL-FLAG (FRAC_COUPLED, excluded)",
-   "max_delta": 0.0,
-   "stars": 2
   },
   {
    "repo": "Kevthetech143/super-jev",
    "answers": 36,
    "deviate": 1,
    "deviate_pct": 2.8,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.135,
+   "class": "ROUNDING",
    "stars": 10
   },
   {
@@ -389,17 +334,7 @@
    "answers": 48,
    "deviate": 1,
    "deviate_pct": 2.1,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.02,
-   "stars": 3
-  },
-  {
-   "repo": "SeeAPI/awesome-jev-use-cases",
-   "answers": 1,
-   "deviate": 1,
-   "deviate_pct": 100.0,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.05,
+   "class": "ROUNDING",
    "stars": 3
   },
   {
@@ -407,17 +342,23 @@
    "answers": 2,
    "deviate": 1,
    "deviate_pct": 50.0,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.06,
+   "class": "ROUNDING",
    "stars": 9
+  },
+  {
+   "repo": "SeeAPI/awesome-jev-use-cases",
+   "answers": 1,
+   "deviate": 1,
+   "deviate_pct": 100.0,
+   "class": "ROUNDING",
+   "stars": 3
   },
   {
    "repo": "bestagentkits/jev-skillful",
    "answers": 177,
    "deviate": 1,
    "deviate_pct": 0.6,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.02,
+   "class": "ROUNDING",
    "stars": 2
   },
   {
@@ -425,8 +366,7 @@
    "answers": 799,
    "deviate": 1,
    "deviate_pct": 0.1,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.106,
+   "class": "ROUNDING",
    "stars": 38
   },
   {
@@ -434,36 +374,16 @@
    "answers": 26,
    "deviate": 1,
    "deviate_pct": 3.8,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.0292,
-   "stars": 281
+   "class": "ROUNDING",
+   "stars": 284
   },
   {
    "repo": "whyashthakker/awesome-jev-use-cases",
    "answers": 4,
    "deviate": 1,
    "deviate_pct": 25.0,
-   "class": "ROUNDING/MINOR (L1 small)",
-   "max_delta": 0.1,
+   "class": "ROUNDING",
    "stars": 12
-  },
-  {
-   "repo": "xienda/dsh-jev-verify",
-   "answers": 2,
-   "deviate": 1,
-   "deviate_pct": 50.0,
-   "class": "HISTORICAL-FLAG (FRAC_COUPLED, excluded)",
-   "max_delta": 0.0,
-   "stars": 1
-  },
-  {
-   "repo": "xingwudao/OpenJev",
-   "answers": 2,
-   "deviate": 1,
-   "deviate_pct": 50.0,
-   "class": "HISTORICAL-FLAG (FRAC_COUPLED, excluded)",
-   "max_delta": 0.0,
-   "stars": 5
   }
  ]
 }

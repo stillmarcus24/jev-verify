@@ -70,37 +70,47 @@ Flags land in the hand-authored stratum and none fire on vendor-channel or recor
 `FRAC_COUPLED` now additionally requires an L1 violation, which removed a large share of them as
 chance coincidences. Treat the census numbers as current and these as historical.
 
-## Ecosystem census (2026-09-23)
+## Ecosystem census (2026-09-23, structure-aware)
 
-Every public repository on the four `awesome-jev` lists, scanned with this checker.
+Every public repository on the four `awesome-jev` lists, scanned with this checker. The L0/L1/L2
+identities are defined only on a **single categorical distribution** over mutually-exclusive
+outcomes, so the checker first classifies each answer's task structure and scores **only
+categorical answers**. Multi-label outputs (independent per-option probabilities — detected by a
+multi-hot `truth` sibling, or by the mathematical fact that a real distribution cannot carry two
+probabilities each > 0.5) and batched containers (`batch_size` > 1) are **skipped, never scored**.
 
 | | |
 |---|---|
 | repos in scope | 1,061 |
 | scanned | 1,054 (99.3%) |
 | containing Jev answers | 88 |
-| **answers checked** | **279,842** |
-| conform | 270,872 (**96.79%**) |
-| deviate | 8,970 (3.21%) |
+| **categorical answers checked** | **275,852** |
+| conform | 270,955 (**98.22%**) |
+| deviate | 4,897 (1.78%) |
 
-Run it yourself: `node scripts/census.cjs data/ecosystem-repos.txt`. Summary in
-`data/census-summary.json`.
+Run it yourself: `node scripts/census.cjs data/ecosystem-repos.txt`. Full per-repo taxonomy in
+[`data/conformance-map.json`](data/conformance-map.json).
 
-Two cautions this census taught, both of which nearly produced false accusations:
+**Correction (2026-09-23):** an earlier version of this census reported 279,842 answers at 96.79%
+and flagged a "fabrication" class including a 2,100-star repo. That was wrong. The detector applied
+`probabilities sum to 1` to **every** probabilities map, with no notion of task structure — so it
+misread multi-label game/RL outputs (e.g. `TianyuCodings/NanoJev`, whose maze/arcade probabilities
+are independent per-direction values that legitimately sum past 1) as fabrication. The checker is
+now structure-aware (42 known-answer tests, incl. the exact shapes that caused the false flag), and
+detection of genuine categorical fabrication is **not** weakened — the gate is structural, not
+sum-based, so a real distribution that fails to sum to 1 (with a `choice` and no multi-hot sibling)
+still deviates.
 
-- `PROBS_DONT_SUM` is **not** forgery. A replica emitting independent per-option probabilities
-  legitimately sums past 1. The largest hit was a 2,106-star project doing exactly that.
-- `FRAC_COUPLED` alone is **not** evidence. `score` and `confidence` are different functions of
-  the same distribution, so at 2dp they collide ~1 time in 100 by chance. The flag now requires
-  an L1 violation as well; applying that cut took the flagged-repo count from 18 to 11, and only
-  4 clear a significance bar against their own chance rate.
+**What the deviations actually are.** Of the 46 repos with any deviation:
 
-Separately, one implementation was found to use a different confidence function entirely:
-`afshinm/laya-mps` computes `1 - H/log(n)` (normalized entropy), recovered to 1e-9 with median
-error exactly 0.0 on 1,085 answers. It disagrees with Jev's ordering on 9.96% of 199,497 real
-pairs, so a threshold ported between the two does not merely shift — it reorders which decisions
-pass. Of 58 "Jev-compatible" projects checked, 51 publish no answers that would let anyone verify
-this either way.
+- **20 use a different confidence law**, not broken output. The clearest, independently re-verified
+  on the live repo: `afshinm/laya-mps` computes `1 - H/log(n)` (normalized entropy) — its
+  probabilities sum to **1.000** and its stated confidence deviates from Jev's L1 by a systematic
+  mean of 0.155, always lower, the normalized-entropy signature. `deepanwadhwa/OpenDecision` (95.9%)
+  and 18 others show the same kind of systematic L1 gap.
+- **24 are rounding-level** (small L1/L2 deltas at 2dp publishing precision).
+- **2 are unresolved** (`PROBS_DONT_SUM` survivors that concentrate in game/RL repos where outputs
+  are plausibly multi-label). These are **not** characterized as fabrication without per-repo review.
 
 ## The identities being checked
 

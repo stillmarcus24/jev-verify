@@ -3,10 +3,11 @@
  "repos_in_scope": 1061,
  "repos_scanned": 1054,
  "repos_with_jev_answers": 88,
- "answers_checked": 279842,
- "conform": 270872,
- "deviate": 8970,
- "conform_pct": 96.7946,
+ "conform": 270955,
+ "deviate": 4897,
+ "conform_pct": 98.2248,
  "method": "L1 confidence=(p_top-1/n)/(1-1/n) [Yurin 2026], L2 score=SUM(level*p), L0 probabilities sum to 1",
- "note": "repo list built from the four public awesome-jev lists; see data/ecosystem-repos.txt"
+ "note": "Only single-categorical answers scored; multi-label and batch outputs skipped. Supersedes the earlier 279,842/96.79% figure computed before task-structure classification (see README Correction).",
+ "checker": "structure-aware (lib/laws.cjs, 42 KATs)",
+ "categorical_answers_checked": 275852
 }
