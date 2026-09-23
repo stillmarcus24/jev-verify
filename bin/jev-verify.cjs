@@ -21,10 +21,15 @@ const OPT = {
   notarize: argv.includes('--notarize'),
   quiet: argv.includes('--quiet'),
 };
+// Flags that consume the following argument. Their VALUES must not be mistaken
+// for file targets -- that bug made `--max-files 300` try to stat a file "300".
+const VALUE_FLAGS = new Set(['--repo', '--max-files']);
+const valueIdx = new Set();
+argv.forEach((a, i) => { if (VALUE_FLAGS.has(a)) valueIdx.add(i + 1); });
+
 const repoIdx = argv.indexOf('--repo');
 const REPO = repoIdx >= 0 ? argv[repoIdx + 1] : null;
-const TARGETS = argv.filter((a, i) =>
-  !a.startsWith('--') && !(repoIdx >= 0 && i === repoIdx + 1));
+const TARGETS = argv.filter((a, i) => !a.startsWith('--') && !valueIdx.has(i));
 
 const NOTARY = process.env.JEV_NOTARY_URL || 'http://127.0.0.1:8466/claim-verdict';
 
