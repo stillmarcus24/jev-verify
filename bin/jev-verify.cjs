@@ -90,18 +90,32 @@ async function notarize(summary) {
 (async () => {
   const docs = [];
   if (REPO) {
-    const files = await listRepoJson(REPO);
-    if (!OPT.quiet && !OPT.json) console.error(`scanning ${files.length} json files in ${REPO} ...`);
-    let scanned = 0;
-    for (const f of files) {
-      let txt;
-      try { txt = await get(f.raw); } catch { continue; }
-      if (!/jev|typesafe/i.test(txt)) continue;   // only Jev-referencing files
-      let d; try { d = JSON.parse(txt); } catch { continue; }
-      docs.push({ name: `${REPO}:${f.path}`, data: d });
-      scanned++;
-      if (scanned % 25 === 0 && !OPT.json && !OPT.quiet) console.error(`  ...${scanned}`);
+    let files = await listRepoJson(REPO);
+    const maxIdx = argv.indexOf('--max-files');
+    const MAX = maxIdx >= 0 ? parseInt(argv[maxIdx + 1], 10) : 500;
+    const found = files.length;
+    if (found > MAX) {
+      // Never cap silently: a truncated scan reads as "covered everything".
+      console.error(`jev-verify: ${REPO} has ${found} json files; scanning the first ${MAX}. ` +
+                    `${found - MAX} NOT checked -- raise with --max-files N.`);
+      files = files.slice(0, MAX);
+    } else if (!OPT.quiet && !OPT.json) {
+      console.error(`scanning ${found} json files in ${REPO} ...`);
     }
+    // Serial fetch is unusably slow on large repos; bound concurrency instead.
+    const CONC = 8;
+    let cursor = 0, scanned = 0;
+    await Promise.all(Array.from({ length: CONC }, async () => {
+      while (cursor < files.length) {
+        const f = files[cursor++];
+        let txt;
+        try { txt = await get(f.raw); } catch { continue; }
+        if (!/jev|typesafe/i.test(txt)) continue;   // only Jev-referencing files
+        let d; try { d = JSON.parse(txt); } catch { continue; }
+        docs.push({ name: `${REPO}:${f.path}`, data: d });
+        if (++scanned % 25 === 0 && !OPT.json && !OPT.quiet) console.error(`  ...${scanned} matched`);
+      }
+    }));
   }
   for (const t of TARGETS) {
     for (const f of walkFiles(t)) {
