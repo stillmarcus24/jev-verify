@@ -81,7 +81,15 @@ function summarize(censusPath) {
   };
 }
 
+// Kill switch. Single tree here (no core/secrets duplication), but the path is
+// resolved absolutely from __dirname so it cannot depend on cron's cwd.
+const KILL = path.join(ROOT, 'state', 'clock-kill.json');
+
 (async () => {
+  if (fs.existsSync(KILL)) {
+    console.error(`clock: kill file present (${KILL}) -- not running.`);
+    process.exitCode = 0; return;
+  }
   const startedAt = new Date().toISOString();
 
   // 1. Refuse to seal on a detector we have not just proven works. An untested

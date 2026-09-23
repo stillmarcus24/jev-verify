@@ -7,8 +7,13 @@
 # so the corpus is reproducible rather than copied.
 set -u
 DIR="$(cd "$(dirname "$0")/.." && pwd)"
-OUT="$DIR/corpus"
-MAN="$DIR/data/fetched.txt"
+# Optional args let the SAME proven fetch path serve a second corpus, rather
+# than a second script drifting out of sync with this one:
+#   scripts/fetch_corpus.sh data/laya-fetched.txt corpus-laya
+MAN="${1:-$DIR/data/fetched.txt}"
+OUT="${2:-$DIR/corpus}"
+case "$MAN" in /*) ;; *) MAN="$DIR/$MAN" ;; esac
+case "$OUT" in /*) ;; *) OUT="$DIR/$OUT" ;; esac
 [ -f "$MAN" ] || { echo "missing manifest: $MAN" >&2; exit 1; }
 mkdir -p "$OUT"
 ok=0; miss=0
