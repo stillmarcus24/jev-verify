@@ -4,3 +4,4 @@ data/harvest-*.tar.gz
 logs/
 corpus-laya/
 corpus-logprobs/
+.venv-parquet/

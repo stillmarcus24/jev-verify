@@ -124,6 +124,48 @@ t('finds exactly 2 answers (Noul excluded)', found.length === 2, `found ${found.
 t('classifies choice and score', found.map((f) => f.kind).sort().join(',') === 'choice,score');
 t('document verdict is CONFORM', L.verifyDocument(nested).deviate === 0);
 
+// ------------------------------------------------- task-structure gating
+// Verbatim shapes that the flat "probabilities sum to 1" law misread as
+// fabrication on 2026-09-23, each nearly a public false accusation.
+console.log('\nKAT 6 -- non-categorical structures must be SKIPPED, not accused');
+{
+  // NanoJev: multi-label maze. `probabilities` are independent per-direction
+  // safety probs, keyed like a multi-hot `truth`. They legitimately sum to ~2.8.
+  const nanojev = { id: 'maze:test:0', planner_action: 'west',
+    truth: { north: false, east: false, south: false, west: true },
+    probabilities: { north: 0.712, east: 0.697, south: 0.667, west: 0.695 } };
+  const a = L.findAnswers(nanojev)[0];
+  t('NanoJev multi-label is classified multilabel', a.structure === 'multilabel', `structure=${a.structure}`);
+  t('NanoJev multi-label is SKIPPED (not DEVIATE)', L.checkAnswer(a).verdict === 'SKIP');
+  t('NanoJev not counted in conformance denominator', L.verifyDocument(nanojev).total === 0);
+
+  // allebee/jevgrep: a batch of 20 questions flattened; container carries
+  // batch_size + aggregate cost/latency. `probabilities` here is not one dist.
+  const batch = { system: 'Jev (batch 20)', batch_size: 20, answered_by: ['typesafe/jev-1.13-20260917'],
+    requests: 10, seconds: 4.43, cost_usd: 0.0008,
+    probabilities: { '1': 0.01, '2': 0.02, '3': 0.9, '4': 0.9, '5': 0.9 } };
+  const b = L.findAnswers(batch)[0];
+  t('batch container is classified batch', b.structure === 'batch', `structure=${b.structure}`);
+  t('batch container is SKIPPED (not DEVIATE)', L.checkAnswer(b).verdict === 'SKIP');
+
+  // A genuine categorical distribution that fails to sum to 1 MUST still be
+  // caught -- the gate is structural, not the sum, so fabrication detection is
+  // NOT weakened. (ax-llm/ax: {billing:0.2,support:0.1} with a choice, no truth.)
+  const realFab = { choice: 'support', confidence: 0.7, probabilities: { billing: 0.2, support: 0.1 } };
+  const c = L.findAnswers(realFab)[0];
+  t('real categorical fabrication still classified categorical', c.structure === 'categorical');
+  t('real categorical fabrication still DEVIATES', L.checkAnswer(c).verdict === 'DEVIATE');
+  t('real categorical fabrication still raises PROBS_DONT_SUM', L.checkAnswer(c).flags.includes('PROBS_DONT_SUM'));
+
+  // Honest 2dp rounding of a near-uniform 3-way dist sums to 0.98 -- must CONFORM
+  // now that L0 tolerance scales with n (3*0.005=0.015 >= 0.02? no -> still, test the
+  // clearly-legitimate {0.34,0.33,0.33}=1.00 and a 4-way {0.25,0.25,0.25,0.24}=0.99).
+  const round4 = { choice: 'a', confidence: 0, probabilities: { a: 0.25, b: 0.25, c: 0.25, d: 0.24 } };
+  const d = L.checkAnswer(L.findAnswers(round4)[0]);
+  const l0 = d.checks.find((x) => x.law === 'L0');
+  t('4-way 2dp rounding (sum 0.99) is within scaled L0 tolerance', l0.status === 'EXACT', `delta=${l0.delta.toFixed(3)} tol=${l0.tolerance}`);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) { console.log('FAILED: ' + fails.join('; ')); process.exit(1); }
 process.exit(0);
