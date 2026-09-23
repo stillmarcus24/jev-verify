@@ -13,9 +13,17 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 const http = require('http');
-const L = require(path.join(__dirname, '..', 'lib', 'laws.cjs'));
+const REG = require(path.join(__dirname, '..', 'lib', 'registry.cjs'));
 
 const argv = process.argv.slice(2);
+const provIdx = argv.indexOf('--provider');
+const PROVIDER = provIdx >= 0 ? argv[provIdx + 1] : 'jev';
+if (argv.includes('--providers')) {
+  for (const p of REG.list()) console.log(`${p.id}\t${p.label}\t[${p.laws.join(' ')}]`);
+  return;
+}
+const L = REG.get(PROVIDER);
+
 const OPT = {
   json: argv.includes('--json'),
   notarize: argv.includes('--notarize'),
@@ -23,7 +31,7 @@ const OPT = {
 };
 // Flags that consume the following argument. Their VALUES must not be mistaken
 // for file targets -- that bug made `--max-files 300` try to stat a file "300".
-const VALUE_FLAGS = new Set(['--repo', '--max-files']);
+const VALUE_FLAGS = new Set(['--repo', '--max-files', '--provider']);
 const valueIdx = new Set();
 argv.forEach((a, i) => { if (VALUE_FLAGS.has(a)) valueIdx.add(i + 1); });
 
@@ -74,8 +82,8 @@ async function listRepoJson(repo) {
 async function notarize(summary) {
   const body = JSON.stringify({
     agent: 'jev-verify',
-    claim: `${summary.conform}/${summary.total} published Jev answers conform to the recovered identities L1 (confidence=(p_top-1/n)/(1-1/n)) and L2 (score=SUM(level*p)); ${summary.fabrication_flags} carry a fabrication fingerprint`,
-    resolver: { type: 'deterministic_recomputation', laws: ['L1', 'L2', 'L0'], tolerance: L.CONFORM },
+    claim: `${summary.conform}/${summary.total} published ${L.label} answers conform to the recomputable identities [${L.laws.map((x) => x.id).join(' ')}]; ${summary.fabrication_flags} raised a flag`,
+    resolver: { type: 'deterministic_recomputation', provider: L.id, laws: L.laws.map((x) => x.id), tolerance: 0.02 },
   });
   const u = new URL(NOTARY);
   return new Promise((resolve) => {
@@ -115,7 +123,7 @@ async function notarize(summary) {
         const f = files[cursor++];
         let txt;
         try { txt = await get(f.raw); } catch { continue; }
-        if (!/jev|typesafe/i.test(txt)) continue;   // only Jev-referencing files
+        if (!L.relevance.test(txt)) continue;   // only provider-relevant files
         let d; try { d = JSON.parse(txt); } catch { continue; }
         docs.push({ name: `${REPO}:${f.path}`, data: d });
         if (++scanned % 25 === 0 && !OPT.json && !OPT.quiet) console.error(`  ...${scanned} matched`);

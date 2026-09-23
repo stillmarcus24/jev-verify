@@ -1,0 +1,12 @@
+# Drop this into .github/workflows/ of any repo that publishes Jev outputs.
+name: jev-verify
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: stillmarcus24/jev-verify@main
+        with:
+          path: .            # file or directory containing published outputs
+          provider: jev      # or laya-mps

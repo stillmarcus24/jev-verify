@@ -1,0 +1,19 @@
+name: self-check
+on:
+  push: { branches: [main] }
+  pull_request:
+  schedule: [{ cron: '17 6 * * *' }]
+jobs:
+  known-answer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      # The detector must prove itself before any verdict it produces is trusted.
+      - run: node test/known-answer.cjs
+      # Dogfood: run the Action on this repo's own corpus manifest.
+      - uses: ./
+        with:
+          path: test
+          fail-on-deviation: 'true'

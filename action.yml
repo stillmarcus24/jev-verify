@@ -1,0 +1,26 @@
+name: 'jev-verify'
+description: 'Check that published Jev/System-One outputs in this repo obey the provider''s recomputable identities.'
+author: 'stillmarcus24'
+branding:
+  icon: 'check-circle'
+  color: 'blue'
+inputs:
+  path:
+    description: 'File or directory to check.'
+    required: false
+    default: '.'
+  provider:
+    description: 'Law set to check against (jev, laya-mps). Run with --providers to list.'
+    required: false
+    default: 'jev'
+  fail-on-deviation:
+    description: 'Fail the job when any answer deviates. Set false to report only.'
+    required: false
+    default: 'true'
+  notarize:
+    description: 'Request an Ed25519-signed, hash-chained receipt for this run.'
+    required: false
+    default: 'false'
+runs:
+  using: 'node20'
+  main: 'scripts/action-entry.cjs'
