@@ -117,7 +117,8 @@ verification result is itself externally checkable rather than something you tak
 ## Reproducing the recovery from scratch
 
 `scripts/` contains the original analysis: `recover.py` fits the candidate laws,
-`deep.py` stratifies by model version and primitive, `score.py` recovers L2. `data/fetched.txt`
+`deep.py` stratifies by model version and primitive, `score.py` recovers L2, and
+`live_confirm.cjs` confirms both identities against the live API if you have a key. `data/fetched.txt`
 lists every harvested file with its source repo and path, so the corpus is re-derivable.
 
 Candidate laws tested and rejected, with fit on the Choice corpus:
@@ -128,8 +129,8 @@ Candidate laws tested and rejected, with fit on the Choice corpus:
 | p_top | 35.8% |
 | p_top - p_second | 31.0% |
 | 2*p_top - 1 | 26.7% |
-| 1 - normalised entropy | 22.3% |
-| normalised Gini | 19.2% |
+| 1 - normalized entropy | 22.3% |
+| normalized Gini | 19.2% |
 
 ## Limits
 
