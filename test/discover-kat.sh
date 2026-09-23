@@ -34,8 +34,12 @@ echo "discover known-answer tests"
 
 # 1. Jev's law, recovered blind. Probabilities are published at 2dp, so the bar
 #    scales to the inputs -- demanding 1e-9 here would measure formatting.
+#    The denominator may come back as (one-invn) or (sum-invn): on a simplex
+#    those are the same law, and on 2dp-rounded data the published sum is the
+#    better normaliser (67.3% vs 67.2%). Accept either rather than pinning the
+#    test to one spelling of one expression.
 check "recovers Jev (p_top-1/n)/(1-1/n)" \
-  'RECOVERED.*\(p1-invn\)/\(one-invn\)' \
+  'RECOVERED.*\(v1-invn\)/\((one|sum)-invn\)' \
   python3 scripts/discover.py corpus --depth 2
 
 # 2. laya-mps publishes full precision, so its law recovers at 1e-9.

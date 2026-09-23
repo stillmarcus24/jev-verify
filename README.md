@@ -167,10 +167,23 @@ case, and is correct on 26.5% of n>=3 samples.
 `scripts/recover.py` and `scripts/compat_matrix.py` both test a fixed list of six hand-written
 candidate formulas. They can only ever find a law somebody already guessed.
 
-`scripts/discover.py` searches instead. It builds nine primitive statistics of the probability
-vector — `p1 p2 pmin n invn logn H sq one` — and enumerates expressions over `+ - * /`, reporting
-any that reproduce the published field. **No composite law is in the search space**, so both
-known laws have to be assembled from primitives or they will not be found.
+`scripts/discover.py` searches instead. It builds primitive statistics of the input vector —
+`v1 v2 vmin n logn sum sq one`, plus `invn`/`H` on a simplex or `expsum`/`expmean`/`mean` in log
+space — and enumerates expressions over `+ - * /`, reporting any that reproduce the published
+field. **No composite law is in the search space**, so both known laws have to be assembled from
+primitives or they will not be found.
+
+**This is brute-force symbolic regression, and symbolic regression is not ours.** It is a mature
+field with far better tools — [PySR](https://github.com/MilesCranmer/PySR), gplearn, and learned-prior
+methods like [deep symbolic regression](https://arxiv.org/abs/1912.04871) and
+[NeSymReS](https://arxiv.org/abs/2106.06427), which beat genetic programming at *exact* expression
+recovery. Anyone doing this seriously should reach for those first.
+
+What is different here is narrow and worth stating plainly: the search runs over **artifacts the
+ecosystem already published**, with no API access, no key, and no ability to query the vendor — so
+the operator set stays tiny and dependency-free rather than general. The usual SR caveat that a
+structurally wrong expression can hide inside a good numerical fit is handled by the exclusion
+control below, not by fit quality.
 
 ```bash
 python3 scripts/discover.py corpus --depth 2                          # Jev
@@ -183,8 +196,11 @@ Both laws recover blind, neither supplied as a candidate:
 
 | corpus | searched | recovered | rate | n |
 |---|---|---|---|---|
-| Jev | 129,503 expressions | `(p1-invn)/(one-invn)` | 67.2% | 1,213 |
+| Jev | 129,503 expressions | `(v1-invn)/(sum-invn)` | 67.3% | 1,213 |
 | laya-mps | 174,977 expressions | `one-(H/logn)` | 60.6% @1e-9 | 1,085 |
+
+On a simplex `sum` is 1, so the Jev row is Yurin's law; on 2dp-rounded data the published sum is
+marginally the better normaliser than assuming exactly 1.0.
 
 The Jev result is a **rediscovery, not a discovery** — that law is Yurin's, established on the live
 API and credited at the top of this file. It is here because recovering a known answer blind is how

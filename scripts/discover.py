@@ -37,6 +37,7 @@ def opt(flag, dflt):
 
 TARGET   = next((a for a in sys.argv[1:] if not a.startswith("--")), None)
 FIELD    = opt("--field", "confidence")
+INPUTS   = opt("--inputs", "probabilities")   # the numeric vector the field is derived FROM
 DEPTH    = int(opt("--depth", "2"))
 MIN_N    = int(opt("--min-n", "30"))
 EXACT    = float(opt("--tol", "1e-9"))
@@ -44,8 +45,37 @@ TOPK     = int(opt("--top", "8"))
 EXCLUDE  = {a for i, a in enumerate(sys.argv) if i and sys.argv[i-1] == "--exclude-primitive"}
 
 # ------------------------------------------------------------------ harvesting
-def harvest(path, field):
-    """Collect (probability vector, published field value) from any JSON shape."""
+def numvec(x):
+    """Coerce the three shapes a published numeric vector actually takes.
+
+    dict name->number            {"a":0.7,"b":0.3}        (Jev probabilities)
+    list of numbers              [-0.5,-1.2,-3.0]
+    list of objects w/ a number  [{"token":"a","logprob":-0.5}, ...]   (logprobs)
+    """
+    if isinstance(x, dict):
+        vs = list(x.values())
+    elif isinstance(x, list):
+        vs = []
+        for e in x:
+            if isinstance(e, (int, float)) and not isinstance(e, bool):
+                vs.append(e)
+            elif isinstance(e, dict):
+                num = [v for k, v in e.items()
+                       if isinstance(v, (int, float)) and not isinstance(v, bool)]
+                if len(num) == 1:
+                    vs.append(num[0])
+        if not vs:
+            return None
+    else:
+        return None
+    if len(vs) < 2 or not all(isinstance(v, (int, float)) and not isinstance(v, bool)
+                              for v in vs):
+        return None
+    return [float(v) for v in vs]
+
+
+def harvest(path, field, inputs=INPUTS):
+    """Collect (numeric input vector, published field value) from any JSON shape."""
     rows = []
     files = []
     if os.path.isdir(path):
@@ -64,11 +94,10 @@ def harvest(path, field):
         while stack:
             node = stack.pop()
             if isinstance(node, dict):
-                p, c = node.get("probabilities"), node.get(field)
-                if (isinstance(p, dict) and len(p) > 1 and isinstance(c, (int, float))
-                        and not isinstance(c, bool)
-                        and all(isinstance(v, (int, float)) for v in p.values())):
-                    rows.append((list(p.values()), float(c)))
+                c = node.get(field)
+                v = numvec(node.get(inputs))
+                if v is not None and isinstance(c, (int, float)) and not isinstance(c, bool):
+                    rows.append((v, float(c)))
                 stack.extend(node.values())
             elif isinstance(node, list):
                 stack.extend(node)
@@ -79,22 +108,60 @@ def harvest(path, field):
 # search space is a pre-supplied answer. (p_top-1/n)/(1-1/n) and 1-H/log(n)
 # must both be ASSEMBLED from these or they will not be found.
 def primitives(P):
-    """P: list of probability vectors -> dict name -> np.array of values."""
+    """P: list of numeric vectors -> dict name -> np.array of values.
+
+    Shape-aware on purpose. Entropy and 1/n are SIMPLEX statistics: -sum(p*ln p)
+    is undefined on logprobs (every value is negative) and 1/n is only a
+    meaningful baseline when the vector sums to 1. Handing a log-space corpus
+    the probability primitives produces NaN columns that get silently dropped,
+    which reads as "no law found" rather than "wrong primitives".
+    """
     out = {}
     srt = [sorted(p, reverse=True) for p in P]
-    out["p1"]   = np.array([s[0] for s in srt])
-    out["p2"]   = np.array([s[1] for s in srt])
-    out["pmin"] = np.array([min(p) for p in P])
+    out["v1"]   = np.array([s[0] for s in srt])     # largest
+    out["v2"]   = np.array([s[1] for s in srt])     # second largest
+    out["vmin"] = np.array([min(p) for p in P])
     n           = np.array([float(len(p)) for p in P])
     out["n"]    = n
-    out["invn"] = 1.0 / n
     out["logn"] = np.log(n)
-    out["H"]    = np.array([-sum(v * math.log(v) for v in p if v > 0) for p in P])
+    out["sum"]  = np.array([sum(p) for p in P])
     out["sq"]   = np.array([sum(v * v for v in p) for p in P])
     out["one"]  = np.ones(len(P))
+
+    # MAJORITY, not unanimity. The Jev corpus contains reimplementations that
+    # emit independent per-option probabilities summing past 1; with np.all(),
+    # a handful of those rows flipped the entire corpus out of simplex mode,
+    # dropped invn and H, and dropped a recovered law to NOT RECOVERED.
+    simplex = bool(np.mean(np.abs(out["sum"] - 1.0) <= 0.011) >= 0.5)
+    if simplex:
+        # mean IS 1/n here, exactly. Carrying both doubles the search space and
+        # relabels a known law as something that looks new.
+        out["invn"] = 1.0 / n
+        out["H"]    = np.array([-sum(v * math.log(v) for v in p if v > 0) for p in P])
+    else:
+        # Log-space corpora: the transform back to probability space is the
+        # thing a derived score is almost always built from.
+        out["expsum"]  = np.array([sum(math.exp(min(v, 700.0)) for v in p) for p in P])
+        out["mean"]    = out["sum"] / n
+        out["expmean"] = np.exp(np.clip(out["sum"] / n, -700, 700))
+        out["expv1"]   = np.exp(np.clip(out["v1"], -700, 700))
+
+    # Drop primitives that are NUMERICALLY IDENTICAL to an earlier one. On a
+    # simplex, sum==one and mean==invn exactly, so carrying both squares the
+    # search space and relabels a known law as something that looks new --
+    # (v1-invn)/(one-invn) reappearing as (v1-mean)/(sum-mean). Generic dedup,
+    # so this cannot recur for a pair nobody anticipated.
+    kept = {}
+    for k, v in out.items():
+        dup = next((j for j, w in kept.items() if np.allclose(v, w, atol=1e-12)), None)
+        if dup is None:
+            kept[k] = v
+    out = kept
+
     for k in EXCLUDE:
         out.pop(k, None)
-    return out
+    return out, simplex
+
 
 OPS = {"+": np.add, "-": np.subtract, "*": np.multiply, "/": np.divide}
 
@@ -161,7 +228,7 @@ def main():
     Pp = [P[i] for i in idx]
     yp = y[idx]
 
-    prims_probe = primitives(Pp)
+    prims_probe, simplex = primitives(Pp)
     print(f"discover: {len(rows)} samples ({PROBE} probed), {len(prims_probe)} primitives "
           f"({' '.join(sorted(prims_probe))}), depth {DEPTH}", file=sys.stderr)
 
@@ -187,7 +254,7 @@ def main():
         near.sort()
         keep = {lbl for _, lbl in near[:200]}
 
-    prims = primitives(P)
+    prims, _ = primitives(P)
     cands = list(build(prims, DEPTH, keep=keep))
     print(f"discover: {len(cands)} survived the probe, re-scored on all "
           f"{len(rows)} samples", file=sys.stderr)

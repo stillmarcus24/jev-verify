@@ -3,3 +3,4 @@ corpus/
 data/harvest-*.tar.gz
 logs/
 corpus-laya/
+corpus-logprobs/
