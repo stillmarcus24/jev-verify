@@ -51,16 +51,25 @@ confidence `0.94` (published: **0.94**), L2 predicts score `1.04` (published: **
 Published "Jev outputs" are not one population. Conflating them produces a false headline.
 This corpus contains at least four kinds:
 
-| population | what it is | L1/L2 conformance |
-|---|---|---|
-| **vendor-channel** | Cloudflare + Vercel catalog examples | **100%** |
-| **recorded responses** | real API calls captured to disk | **~99%** (`elvisun/newsjack` 316/316, `ruvnet/RuVector` 298/300, `apache/maka` 30/30) |
-| **reimplementations** | third-party models named after Jev (`KaLM-Jev`, `Open-Jev`) | varies by design — **not TypeSafe output, do not cite as Jev** |
-| **hand-authored fixtures / notes** | written by a human or a generator | low, and that is the point |
+| population | what it is | L1/L2 conform | fabrication flags |
+|---|---|---|---|
+| **vendor-channel** | Cloudflare + Vercel catalog examples | **10/10 = 100%** | 0 |
+| **recorded responses** | real API calls captured to disk | **843/854 = 98.7%** | 0 |
+| **reimplementations** | third-party models named after Jev (`KaLM-Jev`, `Open-Jev`) | 19/80 = 23.8% | 0 |
+| **hand-authored fixtures / notes** | written by a human or a generator | 115/296 = 38.9% | **121** |
 
-**The headline number should be computed on the first two strata only.** On recorded +
-vendor-channel responses the identities hold at ~99–100%. The all-in number across every file
-that merely mentions "jev" is 79.6%, and that number is misleading.
+**Headline: 853/864 = 98.7%** on vendor-channel + recorded responses. The all-in number across
+every file that merely mentions "jev" is 79.6%, and that number is misleading — do not quote it.
+
+Two things fall out of this table that matter more than the headline:
+
+- **All 121 fabrication flags land in the hand-authored stratum. Zero fire on vendor-channel or
+  recorded responses.** The detector never misfires on real model output. That separation is
+  what licenses trusting it.
+- **Reimplementations conform at only 23.8%.** Projects named after Jev (`Open-Jev`,
+  `KaLM-Jev`) do **not** reproduce its confidence function. If you swapped one in expecting
+  drop-in equivalence, your confidence values are on a different scale than the ones you
+  calibrated your thresholds against.
 
 ## The fabrication fingerprint
 
