@@ -1,5 +1,5 @@
 {
-  "name": "jev-confidence-law",
+  "name": "jev-verify",
   "version": "1.0.0",
   "description": "Recover and verify Jev's undocumented confidence and score identities from published artifacts alone",
   "bin": { "jev-verify": "bin/jev-verify.cjs" },

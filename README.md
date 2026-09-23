@@ -1,102 +1,96 @@
-# jev-confidence-law
+# jev-verify
 
-**Jev returns a typed verdict with a `confidence`. That number is a closed-form rescaling of the top probability — it carries no information the probabilities don't already give you.**
+**Check whether a published Jev output was actually produced by Jev.**
 
-Recovered from **published artifacts only**. No API key, no account, no vendor cooperation.
+Jev's `confidence` is a deterministic function of the probabilities it already returned. That
+means any published Jev answer can be recomputed and checked. Point this at a repository and it
+tells you which answers obey the identities and which do not.
 
-## The two identities
+## Credit where it belongs
+
+The confidence identity is **not our discovery**. It was established by
+**[Stanislav Yurin, "Is Jev confident?" (bernoulli.app, 18 September 2026)](https://bernoulli.app/confidence.html)**,
+from 1,000,164 live answers across 83,347 requests, at a cost of $7.08:
 
 ```
-L1   confidence = (p_top - 1/n) / (1 - 1/n)        # Choice and Score
-L2   score      = SUM(level * p(level))            # Score: the expected level
+C = (N * p_max - 1) / (N - 1)   ==   (p_max - 1/N) / (1 - 1/N)
 ```
 
-`n` is the number of options (Choice) or levels (Score).
+Over 738,164 live Choice answers he measured a mean absolute residual of 0.005 and a maximum
+miss of 0.023. He also treats Score as a modal-concentration measure, shows why entropy
+normalization does not rescue it, and notes that Jev returns an expected score. TypeSafe's CTO
+responded to that work on 20 September 2026.
 
-Neither is documented. TypeSafe's own [`/confidence`](https://docs.typesafe.ai/confidence) page
-says confidence *"is a statistic computed from the probability distribution the answer already
-gives you"*, then defers the definition:
+**[primeline.cc](https://primeline.cc/blog/typesafe-jev-pre-registered-test)** independently
+replicated it on 2,004 answers and added the monotonicity result: strict confidence versus
+top-probability reversals occur in 0.076% and 0.030% of pairs, none above a 0.02 gap.
 
-> *"you are never locked into our definition. The pros and cons of different computations is a
-> specialized topic that we'll keep to a separate cookbook rather than this page, and will add
-> the link here when we do!"*
+We derived the same identity independently, from 843 published artifacts with no API access,
+before finding their work. That is replication by a different method, not a discovery, and the
+agreement is the useful part: our residuals (mean 0.005, max 0.0158) sit inside his bounds,
+measured on a corpus three orders of magnitude larger than ours.
 
-That cookbook was never published. The formula was recoverable anyway, because a deterministic
-function leaves its fingerprint in every output it produces.
+## What this repository adds
 
-## Verified against vendor-channel examples
+Yurin and primeline tested the **live API**. Neither looked at what the ecosystem **publishes**.
+That is a different surface, and it has problems the API cannot show you.
 
-| source | L1 | L2 |
-|---|---|---|
-| `cloudflare/cloudflare-docs` catalog | 8/8 exact | exact |
-| `vercel/ai` | 2/2 exact | exact |
-
-Cloudflare's own published example: probabilities `{0:0, 1:0.96, 2:0.04}` → L1 predicts
-confidence `0.94` (published: **0.94**), L2 predicts score `1.04` (published: **1.04**).
-
-## What this means
-
-1. **Confidence is not a second signal.** It is `p_top` rescaled. Anyone treating it as an
-   independent check on the probability is reading the same number twice.
-2. **A confidence gate is a probability gate.** Confidence is monotone in `p_top` for 98.2% of
-   observed samples, so `confidence > t` is `p_top > t'`. Same decision, different label.
-3. **It inverts.** `n=3, confidence 0.90` → `p_top = 0.9333` exactly. The score hides nothing.
-4. **The ecosystem cites the wrong formula.** `2*p_top - 1` is only the **n=2** special case;
-   on n>=3 samples it is correct **26.5%** of the time (221/834).
-5. **Noul carries no confidence at all** — vendor-confirmed, and 0 of 26 observed Noul answers
-   have the field.
-
-## Provenance matters — read this before quoting a number
-
-Published "Jev outputs" are not one population. Conflating them produces a false headline.
-This corpus contains at least four kinds:
-
-| population | what it is | L1/L2 conform | fabrication flags |
-|---|---|---|---|
-| **vendor-channel** | Cloudflare + Vercel catalog examples | **10/10 = 100%** | 0 |
-| **recorded responses** | real API calls captured to disk | **843/854 = 98.7%** | 0 |
-| **reimplementations** | third-party models named after Jev (`KaLM-Jev`, `Open-Jev`) | 19/80 = 23.8% | 0 |
-| **hand-authored fixtures / notes** | written by a human or a generator | 115/296 = 38.9% | **121** |
-
-**Headline: 853/864 = 98.7%** on vendor-channel + recorded responses. The all-in number across
-every file that merely mentions "jev" is 79.6%, and that number is misleading — do not quote it.
-
-Two things fall out of this table that matter more than the headline:
-
-- **All 121 fabrication flags land in the hand-authored stratum. Zero fire on vendor-channel or
-  recorded responses.** The detector never misfires on real model output. That separation is
-  what licenses trusting it.
-- **Reimplementations conform at only 23.8%.** Projects named after Jev (`Open-Jev`,
-  `KaLM-Jev`) do **not** reproduce its confidence function. If you swapped one in expecting
-  drop-in equivalence, your confidence values are on a different scale than the ones you
-  calibrated your thresholds against.
-
-## The fabrication fingerprint
-
-Some published fixtures set `confidence` to the **fractional part of `score`**:
+**1. Some published "Jev outputs" were never produced by Jev.** In several fixtures the
+`confidence` equals the fractional part of `score`:
 
 ```
 score 2.58 -> conf 0.58      score 2.53 -> conf 0.53
 score 2.38 -> conf 0.38      score 2.66 -> conf 0.66
 ```
 
-A calibration statistic cannot legitimately track a decimal remainder. This is a generator
-artifact. It appears in `ax-llm/ax` and `0xPlaygrounds/rig`'s `rounded.json`, and in **zero**
-vendor-channel or recorded-response samples — the same sources the L1 test flags independently.
-Two unrelated detectors agreeing is what makes it evidence rather than an anomaly.
+A calibration statistic cannot track a decimal remainder. This is a generator artifact. It
+appears in `ax-llm/ax` and in `0xPlaygrounds/rig`'s `rounded.json`, and in **zero** vendor-channel
+or recorded-response samples — the same sources the identity test flags independently. Two
+unrelated detectors agreeing is what makes it evidence rather than an anomaly.
 
-**Stated fairly:** a deviation means *"this output does not obey the laws the model's real
-outputs obey."* Innocent explanations exist and must be checked first — deliberate rounding
-(`rounded.json` is named for it), an older model version, or a reimplementation. The tool
-reports deviation; it does not assert intent.
+**Stated fairly:** a deviation means *"this output does not obey the identities real outputs
+obey."* Innocent explanations exist and should be checked first — deliberate rounding
+(`rounded.json` is named for it), an older model version, or a reimplementation. This tool
+reports deviation, not intent.
+
+**2. Jev reimplementations do not reproduce the identity.** Projects named after Jev
+(`Open-Jev`, `KaLM-Jev`) conform at **19/80 = 23.8%**. If you swapped one in expecting drop-in
+equivalence, your confidence values are on a different scale than the thresholds you calibrated
+against. That is a live miscalibration, not a theoretical one.
+
+**3. Published Jev artifacts are not one population.** Conflating them produces a false number:
+
+| population | what it is | conform | fabrication flags |
+|---|---|---|---|
+| vendor-channel | Cloudflare + Vercel catalog examples | 10/10 = 100% | 0 |
+| recorded responses | real API calls captured to disk | 843/854 = 98.7% | 0 |
+| reimplementations | third-party models named after Jev | 19/80 = 23.8% | 0 |
+| hand-authored fixtures / notes | written by a human or a generator | 115/296 = 38.9% | **121** |
+
+All 121 fabrication flags land in the hand-authored stratum. **Zero fire on vendor-channel or
+recorded responses.** The detector never misfires on real model output, which is what licenses
+trusting it. The all-in number across every file that merely mentions "jev" is 79.6% — misleading,
+do not quote it.
+
+## The identities being checked
+
+```
+L0   probabilities sum to 1
+L1   confidence = (p_top - 1/n) / (1 - 1/n)     # Yurin (2026); Choice and Score
+L2   score      = SUM(level * p(level))         # the expected level
+```
+
+Noul answers carry no confidence — TypeSafe states this directly on their
+[confidence page](https://docs.typesafe.ai/confidence), and 0 of 26 observed Noul answers have
+the field. There is nothing to check.
 
 ## Install and run
 
 Requires Node 18+. No dependencies.
 
 ```bash
-git clone https://github.com/stillmarcus24/jev-confidence-law
-cd jev-confidence-law
+git clone https://github.com/stillmarcus24/jev-verify
+cd jev-verify
 node test/known-answer.cjs                       # 27 known-answer tests, must print "0 failed"
 bash scripts/fetch_corpus.sh                     # rebuild the corpus from data/fetched.txt
 node bin/jev-verify.cjs corpus                   # verify it
@@ -104,27 +98,20 @@ node bin/jev-verify.cjs --repo owner/name        # verify any GitHub repo
 node bin/jev-verify.cjs path/to/file.json --json # machine-readable
 ```
 
+Exit code is `0` when every answer conforms, `1` when any deviates, `2` on error.
+
 The corpus is not redistributed here. Every harvested file belongs to the repository that
 published it, under that project's license. `data/fetched.txt` is the manifest and
-`scripts/fetch_corpus.sh` re-fetches each file from its source, so the corpus is
-reproducible rather than copied.
-
-Exit code is `0` when every answer conforms, `1` when any deviates, `2` on error.
+`scripts/fetch_corpus.sh` re-fetches each file from its source, so the corpus is reproducible
+rather than copied.
 
 Optional: `--notarize` requests an Ed25519-signed, hash-chained receipt for the run, so a
 verification result is itself externally checkable rather than something you take on trust.
 
-## Reproducing the recovery from scratch
+## Reproducing the independent derivation
 
-`scripts/` contains the original analysis: `recover.py` fits the candidate laws,
-`deep.py` stratifies by model version and primitive, `score.py` recovers L2, and
-`live_confirm.cjs` confirms both identities against the live API if you have a key. `data/fetched.txt`
-lists every harvested file with its source repo and path, so the corpus is re-derivable.
-
-Candidate laws tested and rejected. These are the **all-in, unstratified** numbers that
-`scripts/recover.py` prints against the full 199-file corpus, so you can reproduce them exactly.
-They are lower than the headline because the full corpus mixes reimplementations and
-hand-authored fixtures in with real output — see the provenance table above.
+`scripts/recover.py` fits candidate laws against the corpus and prints this table, which is how
+the identity was recovered here without API access:
 
 | candidate | exact @ +/-0.011 | median err |
 |---|---|---|
@@ -135,17 +122,24 @@ hand-authored fixtures in with real output — see the provenance table above.
 | 1 - normalized entropy | 28.2% | 0.0466 |
 | normalized Gini | 22.3% | 0.0733 |
 
-The recovered law wins by a factor of two on exact matches and by an order of magnitude on
-median error against every alternative, on the noisiest possible corpus. On vendor-channel and
-recorded responses it is 853/864. `scripts/score.py` prints L2 at 231/267 all-in.
+These are all-in, unstratified numbers against the full 199-file corpus, so they reproduce
+exactly. They are lower than the stratified figures because the full corpus mixes
+reimplementations and hand-authored fixtures in with real output. `scripts/deep.py` stratifies by
+model version and primitive; `scripts/score.py` examines L2; `scripts/live_confirm.cjs` confirms
+both identities against the live API if you have a key.
+
+Note that `2*p_top - 1` — the form most often quoted in the ecosystem — is only the n=2 special
+case, and is correct on 26.5% of n>=3 samples.
 
 ## Limits
 
-- Covers `Choice` and `Score`. **`Noul` returns no confidence**, so there is nothing to check.
-- Clean `Score` samples are thin (n=15 vendor-channel + recorded). L2 is exact on those, but
-  treat the Score headline as a strong result on small n.
-- **No live Jev API call was ever made.** Every number here comes from published artifacts.
-  A single authenticated call would confirm L1 and L2 directly; it would not change them.
+- Covers `Choice` and `Score`. `Noul` returns no confidence, so there is nothing to check.
+- Clean `Score` samples are thin (n=15 vendor-channel + recorded).
+- **No live Jev API call was made here.** Every number in this repository comes from published
+  artifacts. Yurin's live-API measurement is the authority on the identity itself; this work is
+  about the published corpus. Since 21 September, `console.typesafe.ai` has returned HTTP 500 on
+  every auth path ([typesafe-ai/skills#10](https://github.com/typesafe-ai/skills/issues/10)), so
+  obtaining a key to confirm independently is currently not possible.
 - Tolerances follow publishing precision: probabilities are published at 2dp, so a +/-0.005
   rounding on `p_top` propagates to <=0.010 on confidence. `EXACT` is 0.011, `CONFORM` is 0.02.
 
