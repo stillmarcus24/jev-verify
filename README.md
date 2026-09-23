@@ -72,6 +72,38 @@ recorded responses.** The detector never misfires on real model output, which is
 trusting it. The all-in number across every file that merely mentions "jev" is 79.6% — misleading,
 do not quote it.
 
+## Ecosystem census (2026-09-23)
+
+Every public repository on the four `awesome-jev` lists, scanned with this checker.
+
+| | |
+|---|---|
+| repos in scope | 1,061 |
+| scanned | 1,054 (99.3%) |
+| containing Jev answers | 88 |
+| **answers checked** | **279,842** |
+| conform | 270,872 (**96.79%**) |
+| deviate | 8,970 (3.21%) |
+
+Run it yourself: `node scripts/census.cjs data/ecosystem-repos.txt`. Summary in
+`data/census-summary.json`.
+
+Two cautions this census taught, both of which nearly produced false accusations:
+
+- `PROBS_DONT_SUM` is **not** forgery. A replica emitting independent per-option probabilities
+  legitimately sums past 1. The largest hit was a 2,106-star project doing exactly that.
+- `FRAC_COUPLED` alone is **not** evidence. `score` and `confidence` are different functions of
+  the same distribution, so at 2dp they collide ~1 time in 100 by chance. The flag now requires
+  an L1 violation as well; applying that cut took the flagged-repo count from 18 to 11, and only
+  4 clear a significance bar against their own chance rate.
+
+Separately, one implementation was found to use a different confidence function entirely:
+`afshinm/laya-mps` computes `1 - H/log(n)` (normalized entropy), recovered to 1e-9 with median
+error exactly 0.0 on 1,085 answers. It disagrees with Jev's ordering on 9.96% of 199,497 real
+pairs, so a threshold ported between the two does not merely shift — it reorders which decisions
+pass. Of 58 "Jev-compatible" projects checked, 51 publish no answers that would let anyone verify
+this either way.
+
 ## The identities being checked
 
 ```

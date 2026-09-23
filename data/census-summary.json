@@ -1,0 +1,12 @@
+{
+  "generated_utc": "2026-09-23",
+  "repos_in_scope": 1061,
+  "repos_scanned": 1054,
+  "repos_with_jev_answers": 88,
+  "answers_checked": 279842,
+  "conform": 270872,
+  "deviate": 8970,
+  "conform_pct": 96.79,
+  "method": "L1 confidence=(p_top-1/n)/(1-1/n) [Yurin 2026], L2 score=SUM(level*p), L0 probabilities sum to 1",
+  "note": "repo list built from the four public awesome-jev lists; see data/ecosystem-repos.txt"
+}

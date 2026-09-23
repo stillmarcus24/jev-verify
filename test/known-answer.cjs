@@ -80,6 +80,25 @@ for (const d of DEGENERATE) {
   t(`conforms (${d.why})`, L.checkAnswer(a).verdict === 'CONFORM');
 }
 
+// ------------------------------------------- the coincidence false positive
+// score and confidence are different functions of the same distribution, so at
+// 2dp frac(score) matches a legitimate confidence ~1 time in 100 by chance.
+// Found live in kavehmz/typesafe-playground: L1 predicted 0.7600 and the
+// published confidence WAS 0.76 -- a perfect identity match that the naive
+// frac test flagged as forgery. 18 repos were about to be accused on this.
+console.log('\nKAT 3b -- frac coincidence with a VALID confidence must NOT be flagged');
+{
+  // n=5, p_top=0.808 -> L1 = (0.808-0.2)/0.8 = 0.76 exactly; score frac is also .76
+  const rec = { probabilities: { '0': 0.048, '1': 0.048, '2': 0.048, '3': 0.048, '4': 0.808 },
+                confidence: 0.76, score: 3.76 };
+  const a = L.findAnswers(rec)[0];
+  const r = L.checkAnswer(a);
+  const l1 = r.checks.find((c) => c.law === 'L1');
+  t('L1 is satisfied on the coincidence record', l1.status !== 'DEVIATE', `delta=${l1.delta.toFixed(4)}`);
+  t('raw fracCoupled() still sees the coupling', L.fracCoupled(a) === true);
+  t('but FRAC_COUPLED is NOT raised (L1 holds)', !r.flags.includes('FRAC_COUPLED'), `flags=${r.flags}`);
+}
+
 // --------------------------------------------------------- law unit checks
 console.log('\nKAT 4 -- the laws themselves');
 t('L1 n=2 reduces to 2*p_top-1',
