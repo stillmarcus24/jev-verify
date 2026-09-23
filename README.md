@@ -121,16 +121,23 @@ verification result is itself externally checkable rather than something you tak
 `live_confirm.cjs` confirms both identities against the live API if you have a key. `data/fetched.txt`
 lists every harvested file with its source repo and path, so the corpus is re-derivable.
 
-Candidate laws tested and rejected, with fit on the Choice corpus:
+Candidate laws tested and rejected. These are the **all-in, unstratified** numbers that
+`scripts/recover.py` prints against the full 199-file corpus, so you can reproduce them exactly.
+They are lower than the headline because the full corpus mixes reimplementations and
+hand-authored fixtures in with real output — see the provenance table above.
 
-| candidate | exact @ +/-0.011 |
-|---|---|
-| **(p_top - 1/n)/(1 - 1/n)** | **87.5%** (98.5% on Choice at +/-0.02) |
-| p_top | 35.8% |
-| p_top - p_second | 31.0% |
-| 2*p_top - 1 | 26.7% |
-| 1 - normalized entropy | 22.3% |
-| normalized Gini | 19.2% |
+| candidate | exact @ +/-0.011 | median err |
+|---|---|---|
+| **(p_top - 1/n)/(1 - 1/n)** | **75.4%** | **0.0050** |
+| p_top | 35.6% | 0.0300 |
+| p_top - p_second | 33.4% | 0.0500 |
+| 2*p_top - 1 | 28.4% | 0.0849 |
+| 1 - normalized entropy | 28.2% | 0.0466 |
+| normalized Gini | 22.3% | 0.0733 |
+
+The recovered law wins by a factor of two on exact matches and by an order of magnitude on
+median error against every alternative, on the noisiest possible corpus. On vendor-channel and
+recorded responses it is 853/864. `scripts/score.py` prints L2 at 231/267 all-in.
 
 ## Limits
 
