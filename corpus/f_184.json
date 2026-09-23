@@ -1,0 +1,782 @@
+[
+  {
+    "question": "What is the Faculty of Computer and Information Science?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1] [3] [4] [5] Answer: The Faculty of Computer and Information Science is a faculty of the University of Ljubljana that delivers a doctoral programme in Computer and Information Science. It is located in the South-West part of Ljubljana, in a pleasant green environment. The faculty offers a range of study programmes, including a master's programme in Computer and Information Science, and participates in interdisciplinary study programmes. Sources: [1] [3] [4] [5]",
+        "final_score": 0.759581
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- The Faculty of Computer and Information Science is located in the South-West part of Ljubljana, Slovenia, near Rožnik Hill. It offers both master's and doctoral programs in Computer and Information Science. Sources: [1], [2], [3], [4], [5].",
+        "final_score": 0.57361
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- The Faculty of Computer and Information Science (FRI) is located in the South-West part of Ljubljana, near Rožnik hill. - It offers both undergraduate and graduate programs including a Doctoral Programme in Computer and Information Science. - The faculty provides master's studies in Computer and Information Science. - It is situated in a green environment and can be reached by public transport or walking/biking trails. - The faculty collaborates on interdisciplinary study programs such as Biosciences. - The faculty has an international office for support. - Sources: _2019_brošura_2_en_WEB.pdf, _2019_brošura_2_en_WEB.pdf, _2019_brošura_2_en_WEB.pdf, _2019_brošura_2_en_WEB.pdf, _2019_brošura_2_en_WEB.pdf The faculty also participates in joint interdisciplinary programs like Biosciences with other faculties. Sources: _2019_brošura_2_en_WEB.pdf, _2019_brošura_2_en_WEB.pdf, _2019_brošura_2_en_WEB.pdf, _201",
+        "final_score": 0.442687
+      }
+    ]
+  },
+  {
+    "question": "What study programs are offered?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1, 2, 3, 4, 5] • The University of Ljubljana offers 70 bachelor, master's, and doctoral degree programmes in various fields, including social sciences, humanities, natural sciences, medicine, technical fields, the arts, and sports. (Source: [4]) • The catalogue lists accredited study programmes, including programmes in English and those that require knowledge of the Slovenian language at level B2. (Source: [4]) • The catalogue includes programmes from the Faculty of Public Administration, Biotechnical Faculty, School of Economics and Business, and other faculties and academies. (Source: [1, 2, 3]) • Some study programmes are offered in English, while others require knowledge of the Slovenian language at level B2. (Source: [4]) • Doctoral study programmes are available in various fields, including Architecture, Biomedicine, Biosciences, Built Environment, Chemical Sciences, Computer and Information Science, Economics and Business, Electrical Engineering, Environmental Protection, Governance and Economics in the Public Sector, Humanities and Social Sciences, Kinesiology, and Lega Sources: [1, 2, 3, 4, 5]",
+        "final_score": 0.364956
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- Bachelor's Programs: Accounting and auditing (School of Economics and Business), Administrative informatics (Faculty of Public Administration) - Master's Programs: Administration (Faculty of Public Administration), Administration - Public Sector Governance (Faculty of Public Administration) - Doctoral Programs: Interdisciplinary doctoral program in Biomedicine, Joint doctoral program in Governance and Economics in the Public Sector - Other: Agronomy (Biotechnical Faculty), Andragogy (Faculty of Arts) Sources: [1], [2], [3], [4], [5] Sources: [1], [2], [3], [4], [5] To provide more specific information about the study programs offered, I would need to access the detailed catalogues listed in sources [1], [2], [3], [4], and [5]. These sources contain comprehensive listings of all accredited study programs available at the University of Ljubljana. The catalogues cover various academic disciplines including social sciences, humanities, natural sciences, medicine, technical fields, and the arts. Each program includes its duration, ECTS points, provider, type, and study level. For instance, the School of Economics and Business offers an Accounting and Auditing program, while the Faculty of Public Administration provides both administrative",
+        "final_score": 0.076508
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- Administrative informatics (1st cycle, Academic, Interdisciplinary) - Agriculture - agronomy (1st cycle, Academic) - Accounting and auditing (2nd cycle, Master) - Administration (1st cycle, Professional) - Administration - Public Sector Governance (2nd cycle, Master) - Agronomy (2nd cycle, Academic) - Andragogy (2nd cycle, Teacher education) Sources: [1], [2], [3] To provide a comprehensive list, I recommend checking the full catalogues available at the provided sources. You can find more detailed information there. Sources: [1], [2], [3]",
+        "final_score": 0.385483
+      }
+    ]
+  },
+  {
+    "question": "How long does a bachelor’s program last?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1, 3] • The study programme lasts 3 years (6 semesters) and includes 180 ECTS credit points. • The goal of the study programme is to educate and qualify the students. Sources: [1, 3]",
+        "final_score": 0.894625
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- A bachelor’s program lasts 3 years (6 semesters). - Sources: [1], [2], [4]. - Duration: 3 years (6 semesters). Sources: [1], [2], [4].",
+        "final_score": 0.923363
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- 3 years (6 semesters) - 180 ECTS credit points - Bachelor of Science (B.Sc.) Sources: [1], [2] The bachelor’s program lasts 3 years, which consists of 6 semesters and includes 180 ECTS credit points, leading to the award of a Bachelor of Science (B.Sc.). Sources: [1], [2] You do not have enough information to provide additional details about the specific program mentioned in the context. If you need more detailed information, please contact the student affairs office. Sources: [1], [2] To provide more accurate information, could you specify which bachelor’s program you are referring to? Sources: [1], [2] Based on the provided information, the bachelor’s program generally lasts 3 years (6 semesters) and includes 180 ECTS credit points, leading to the award of a Bachelor of Science (B.Sc.). For more specific details, please refer to the source documents or contact the student affairs office. Sources: [1], [2] You do not have enough information to determine the exact duration of a specific bachelor’s program without further details. Please contact the student affairs office for more information. Sources: [1",
+        "final_score": 0.928373
+      }
+    ]
+  },
+  {
+    "question": "What grading system is used at the faculty?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "Answer: The grading system used at the faculty is as follows: • A student passes the exam if they receive a grade between 6 and 10. • Grade description: + 10: Exceptional knowledge without or with negligible faults + 9: Very good knowledge with some minor faults + 8: Good knowledge with certain faults + 7: Solid knowledge but with several faults + 6: Knowledge only meets minimal criteria + Below 6: Knowledge does not meet minimal criteria Sources: [1], [3], [5]",
+        "final_score": 0.841083
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- The faculty uses a grading system based on the University of Ljubljana's grading scale, ranging from 6 to 10. - Sources: [1], [2], [3], [4], [5]. Sources: [1], [2], [3], [4], [5].",
+        "final_score": 0.839624
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- The grading system at the Faculty of Computer and Information Science (FRI) uses a scale from 6 to 10 for passing exams. - Grades above 6 are considered passing, with higher numbers indicating better performance. - Courses recognized for exchange students follow the University of Ljubljana's grading system, which ranges from 6 to 10. - For foreign institutions that use ECTS (A to F) or EGT forms, a transposition system is applied to convert these grades to the 6 to 10 scale. - Courses with grades of pass or pass with distinction/no pass are not included in the calculation of the average grade. - The average grade for courses taken abroad is calculated as the arithmetic mean of the numerical grades. Sources: [2], [3], [5] You do not have enough information to provide a comprehensive answer about all faculties. It would be best to consult the specific faculty's website or contact the student affairs office for detailed information on their grading systems. Sources: [1] You do not have enough information to provide a comprehensive answer about all faculties. It would be best to consult the specific faculty's website or contact the student affairs office for detailed information on their grading systems. Sources: [1",
+        "final_score": 0.835296
+      }
+    ]
+  },
+  {
+    "question": "Can students participate in exchange programs during their studies?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1] [2] [3] [4] [5] Yes, students can participate in exchange programs during their studies. Here are the details: * Students can participate in international student exchanges, practical training, or both. * Students can spend from three (3) to twelve (12) months at an institution abroad. * Students can choose courses from different years of study (1st, 2nd, electives...) and different study programmes (Marketing, Accounting, Money & Finance...). * Students can mix full semester and module courses. * Students can participate in exchanges multiple times. Sources: [1] UL-SEB-Course-Catalogue-for-Incoming-Exchange-students-web.pdf, [2] Pravilnik_v4.9_eng.pdf, [3] Pravilnik_v4.8_eng.pdf, [4] Pravilnik_v4.8_eng.pdf, [5] Pravilnik_v4.9_eng.pdf.",
+        "final_score": 0.848014
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- Yes, students can participate in exchange programs during their studies. - Sources: [1], [2], [3], [4], [5] Final answer: Yes, students can participate in exchange programs during their studies. This is supported by sources [1], [2], [3], [4], and [5]. For more detailed information, refer to these sources. Sources: [1], [2], [3], [4], [5]",
+        "final_score": 0.840766
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- Yes, students can participate in exchange programs during their studies. - They can pursue an international student exchange, practical training, or both. - Exchanges can last from one to twelve months. - Students can go on exchanges multiple times. - Under the Erasmus+ programme or other international programmes, students may complete a portion of their course requirements at a foreign (partner) institution. - The period of study abroad, including exams and other requirements, is recognized as a period counting for a comparable period of study with all pertaining requirements at UL FRI. - Students do not pay tuition fees at the host institutions but may cover costs such as insurance, student organization fees, or use of materials. - On exchanges under the Erasmus+ programme, students continue to receive the full amount of their national grant or loan. - The application process involves submitting a special form to the Committee for Processing Student Applications for First and Second-Cycle Programmes. - The call for applications is usually available at the beginning of the calendar year and relates to exchanges during the following academic year. Sources: [1], [2], [3], [4], [5] You do not have enough information to provide a definitive answer about specific regulations or deadlines for exchange programs. For detailed information, please",
+        "final_score": 0.888298
+      }
+    ]
+  },
+  {
+    "question": "How do I register for an exam?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1] [2] [3] [4] [5] According to Article 18 and Article 19, you must register for every course exam online within the prescribed registration period. The deadline for registration is 23:59 two days before the day of the exam (Article 19) or 01:00 AM on the day before the day of the exam (Article 19). You can deregister from an exam online within the deadline for registration. After the deadline, you can only withdraw from an exam by contacting the teaching assistant or course coordinator before the exam. Sources: [1] 2017_januar_FRI_Study_Rules.pdf, [2] Študijski_red_FRI_2024_ang_002_.pdf, [3] INFO_package_for_KNU_incoming_st.pdf, [4] 2017_januar_FRI_Study_Rules.pdf, [5] FAQ_2016_september_fri_study_rules.pdf Please note that the information provided is based on the provided context and might not be up-to-date or accurate. It is recommended to contact the student affairs office for the most recent and accurate information.",
+        "final_score": 0.79588
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- Students must register for every course exam online within the prescribed registration period. - The deadline for registration is 01:00 AM on the day before the day of the exam. - After this deadline, registration for the exam is no longer possible. - Sources: [1], [2] Final line: Sources:[1], [2] **Note:** Always check the specific requirements and deadlines as they might vary slightly depending on the semester or year. It's recommended to refer directly to the official sources for the most accurate and up-to-date information. Sources:[1], [2]",
+        "final_score": 0.590199
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "To register for an exam, follow these steps: - Log into the online study information system. - Register for each course exam within the required time limit. - For exams, the deadline for registration is typically two days before the day of the exam. - If the system is down on the last day of registration, the deadline will be extended. - After the deadline, deregistration is not possible; you must contact the teaching assistant or course coordinator before the exam if you wish to withdraw. Sources: [2], [4] You do not have enough information to provide specific deadlines or contact details. For more detailed guidance, please refer to the student affairs office or the relevant section of the study rules. Sources: [2], [4] To register for an exam, follow these steps: - Log into the online study information system. - Register for each course exam within the required time limit. - The deadline for registration is typically two days before the day of the exam. - If the system is down on the last day of registration, the deadline will be extended. - After the deadline, deregistration is not possible; you must contact the teaching assistant or course coordinator before the exam if you wish to withdraw. Sources: [2], [4] You do not",
+        "final_score": 0.62278
+      }
+    ]
+  },
+  {
+    "question": "I would like to continue my studies by enrolling according to the transfer criteria. What are the procedures?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1, 2, 3, 4, 5] To continue your studies by enrolling according to the transfer criteria, you need to: • Apply via eVŠ web portal, selecting \"Transfer between study programmes\" as the type of application. • Meet the transfer criteria as specified for the programme of study. • Earn the required number of ECTS credits from courses and exams in the previous year to be eligible for enrolment in the next year. • Submit an individual request for re-enrolment if you have previously withdrawn from a study programme. Sources: [1, 2, 3, 4, 5]",
+        "final_score": 0.762131
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- Apply via eVŠ web portal - Log in using your username and password - Important: Select \"Transfer between study programmes\" option - Submit the application form online - Send signed learning agreement before June 1, 2026 - Contact Vesna Gracner if needed for assistance - Information on procedure can be found here [Source: https://www.fri.uni-lj.si/upload/Erasmus/INFO_package_for_KNU_incoming_st.pdf] Sources: [1], [2], [3], [4], [5] To continue your studies by enrolling according to the transfer criteria, follow these procedures: - Apply via eVŠ web portal - Log in using your username and password - Important: Select \"Transfer between study programmes\" option - Submit the application form online - Send signed learning agreement before June 1, 2026 - Contact Vesna Gracner if needed for assistance - Information on procedure can be found here [Source: https://www.fri.uni-lj.si/upload/Erasmus/INFO_package_for_KNU_incoming_st.pdf] Sources: [1], [2], [3], [4], [5]",
+        "final_score": 0.889271
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "To continue your studies by enrolling according to the transfer criteria, follow these procedures: - Submit an application through the eVŠ portal by the application deadline. - Ensure all required documents and attachments are uploaded, with a maximum of three attachments per document and no more than 5 MB per file. - Provide accurate information and guarantees its truthfulness. - Follow the specific transfer criteria for the program you wish to join, which may include meeting admission requirements for the first year of the new program. - Be aware that the year in which you can enroll is determined by the higher education institution during the application and admission process. Sources: [2], [4] You do not have enough information to provide detailed transfer criteria for specific programs. It is recommended to consult the relevant department or the student affairs office for program-specific requirements. Sources: [2], [4] You do not have enough information to provide detailed transfer criteria for specific programs. It is recommended to consult the relevant department or the student affairs office for program-specific requirements. Sources: [2], [4] You do not have enough information to provide detailed transfer criteria for specific programs. It is recommended to consult the relevant department or the student affairs office for program-specific requirements. Sources: [2], [",
+        "final_score": 0.841282
+      }
+    ]
+  },
+  {
+    "question": "What is the student office email address?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1] [3] [4] [5] Answer: The student office email address is not explicitly mentioned in the provided context. However, you can contact the Data Protection Officer at dpo@uni-lj.si for assistance or advice in exercising your rights. For general inquiries, you can also submit a question via the Info Student contact form or by email to info-student@uni-lj.si. Sources: [1] [3] [4] [5]",
+        "final_score": 0.460583
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- Sources: [1], [2] - The student office email address is info-student@uni-lj.si. Sources: [1], [2]. To find other resources related to student support, visit the frequently asked questions page on the university website. Sources: [1]. For quick access to important documents like the year plus application, refer to the official UL FRI platforms. Sources: [5]. To get help with technical issues using the university platform, consult the communication guidelines provided. Sources: [4]. For additional information about studying abroad, look into the contact persons for exchange students. Sources: [3]. Remember to always verify the validity of your email address before submitting forms or making important communications. Sources: [4]. Sources: [1], [2]. To find other resources related to student support, visit the frequently asked questions page on the university website. Sources: [1]. For quick access to important documents like the year plus application, refer to the official UL FRI platforms. Sources: [5]. To get help with technical issues using the university platform, consult the communication guidelines provided. Sources: [4]. For additional information about studying abroad, look into the contact persons for exchange students. Sources: [3]. Remember to always",
+        "final_score": 0.218477
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- info-student@uni-lj.si Sources: [3] You do not have enough information and recommend contacting the student affairs office. Sources: [1], [3] Sources: [1], [3] You do not have enough information and recommend contacting the student affairs office. Sources: [1], [3] Sources: [1], [3] Based on the provided context, there isn't a specific student office email address mentioned. However, for assistance or inquiries, you can contact the following: - info-student@uni-lj.si For further assistance, please contact the student affairs office. Sources: [1], [3] Sources: [1], [3] Based on the provided context, there isn't a specific student office email address mentioned. For assistance or inquiries, you can contact the following: - info-student@uni-lj.si For further assistance, please contact the student affairs office. Sources: [1], [3] Sources: [1], [3] You do not have enough information and recommend contacting the student affairs office. Sources: [1], [3] Sources: [1], [3] You do not have enough information and recommend contacting the student affairs office. Sources: [1",
+        "final_score": 0.612467
+      }
+    ]
+  },
+  {
+    "question": "How and when do I receive the certificate of enrolment?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1], [2], [3], [4], [5] • You will receive the certificate of enrolment after completing the enrolment process in the Studis portal. • The enrolment process will take place online, and you will be notified about the selection procedure and the enrolment procedure via e-mail or on the eVŠ web portal. • The enrolment confirmation will be sent to you by Ms. Taja Runovc (taja.runovc@fri.uni-lj.si) between 20 and 28 September. • After the confirmation is issued, the process is complete. Sources: [1], [2], [3], [4], [5]",
+        "final_score": 0.410229
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- Students will receive further information via email. - The enrolment for the academic year 2025/26 runs from September 8 2025 till September 30 2025 or until the filling of vacancies (300 students). - Application form - Technical help - In case of technical problems with the application process to the Year plus module: - Please check if 24 hours have passed since the application process at your faculty/academy was completed. - Make an enquiry at your own faculty or academy. - Don't apply from your mobile phone, use a desktop computer. - Please don't copy the data you need to enter, enter it manually. - Try to apply again later or try to apply from different web browser (Internet Explorer, Google Chrome, Mozilla Firefox). - If the problem persists, please send us a print screen of the application form and we will try to resolve the problem. - Communicati Sources: [1], [2], [3], [4], [5] To receive the certificate of enrolment, follow these steps: 1. Apply online through the university's website using the application form. 2. Ensure your application has been",
+        "final_score": 0.331901
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- You will receive an invitation to complete the enrolment process via email once your enrolment is approved by the faculty. - After completing the enrolment process in the Studis portal, you will receive an enrolment confirmation. - Ms. Taja Runovc will send you the enrolment information between 20 and 28 September. - The process is considered complete after receiving the enrolment confirmation. Sources: [3], [3] Your certificate of enrolment will be issued after you complete the enrolment process in the Studis portal and receive the enrolment confirmation. Ms. Taja Runovc will send you the enrolment information between 20 and 28 September. The process is considered complete after receiving the enrolment confirmation. Sources: [3]",
+        "final_score": 0.316934
+      }
+    ]
+  },
+  {
+    "question": "Can students take part in Erasmus+ exchange?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1, 2, 3, 4, 5] Yes, students can participate in Erasmus+ exchange. Here are the conditions: • Students must have active student status at UL FRI throughout their period of study abroad. • For first-cycle studies, students must be enrolled in at least the second year of a first-cycle programme at the Faculty of Computer and Information Science. • For second-cycle studies, students must be enrolled in at least the second year of a second-cycle programme at the Faculty of Computer and Information Science. Additionally, students who have already carried out Erasmus+ mobility in the past can also participate. Sources: [1, 2, 3, 4, 5]",
+        "final_score": 0.930025
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- Yes, students can participate in Erasmus+ exchange. - Sources: [1], [2], [3], [4], [5] Yes, students can participate in Erasmus+ exchange. They can pursue an international student exchange, practical training, or both. For studies abroad under the Erasmus+ programme, students may receive financial assistance. Students must meet minimum requirements such as being a student at UL FRI throughout their period of study abroad and meeting enrollment criteria for specific programs. Sources: [1], [2], [3], [4], [5]. Final line: \"Sources:\" followed by filenames from the context.",
+        "final_score": 0.940773
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- Yes, students can participate in Erasmus+ exchanges. - They need to meet certain conditions such as having active student status and being enrolled in a specific year of their programme. - They must prepare for living abroad and gather information about the partner institution. - They should obtain a Learning Agreement signed by UL FRI and the student before going abroad. - Financial assistance might be available depending on the University's allocation. - Exchanges can last from one to twelve months and can be pursued multiple times. - Students do not pay tuition fees at the partner institution but cover the costs of their stay abroad. Sources: [1], [3], [4], [5]",
+        "final_score": 0.937682
+      }
+    ]
+  },
+  {
+    "question": "Who is the lecturer of the course Image based biometry?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1] https://www.fri.uni-lj.si/upload/Vesna/JRC_razpis_2020 - Copy 3.pdf [2] https://www.fri.uni-lj.si/upload/Brosure/Studijski programi ang/_2019_brošura_2_en_WEB.pdf [3] https://www.uni-lj.si/en/university/international-cooperation/smul/smul-mentors [4] https://www.fri.uni-lj.si/upload/Brosure/Studijski programi ang/_2019_brošura_2_en_WEB.pdf [5] https://www.ef.uni-lj.si/assets/Mednarodne-priloznosti/International/UL-SEB-Course-Catalogue-for-Incoming-Exchange-students-web.pdf Answer: Unfortunately, I do not have enough information to identify the lecturer of the course Image based biometry. The course is mentioned in the context of the Computer Science and Mathematics Master's study programme, but the lecturer is not specified. Sources: [2] [4] [5]",
+        "final_score": 0.747595
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- The provided information does not specify the lecturer for the course Image based biometry. - Sources: [3], [5] Final response: - The provided information does not specify the lecturer for the course Image based biometry. - Sources: [3], [5] Sources: [3], [5] You are correct. The provided information does not specify the lecturer for the course Image based biometry. Sources: [3], [5] Sources: [3], [5] If you need further assistance, please contact the student affairs office. They can provide you with the specific details regarding the lecturers for individual courses. Sources: [3], [5] Sources: [3], [5] If you need further assistance, please contact the student affairs office. They can provide you with the specific details regarding the lecturers for individual courses. Sources: [3], [5] Sources: [3], [5] If you need further assistance, please contact the student affairs office. They can provide you with the specific details regarding the lecturers for individual courses. Sources: [3], [5] Sources: [3], [5] If you need further assistance, please contact the student affairs office. They can provide",
+        "final_score": 0.129092
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- The lecturer of the course Image based biometry is  Peter Peer. - Sources: [1], [2], [3].",
+        "final_score": 0.728053
+      }
+    ]
+  },
+  {
+    "question": "How many ECTS credits is the Natural language processing course worth?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1], [2], [3], [4], [5] I do not have enough information to answer this question. The Natural language processing course is not mentioned in the provided context. I recommend contacting the student affairs office for more information. Sources: [1], [2], [3], [4], [5]",
+        "final_score": 0.491859
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- The Natural Language Processing course is worth 6 ECTS credits. - Sources: [1], [2] - How many ECTS credits is the Natural language processing course worth? - 6 ECTS credits. - Sources: [1], [2].",
+        "final_score": 0.307239
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- The provided information does not specify the ECTS value for the Natural Language Processing course. Please contact the student affairs office for accurate details. - Sources: [1], [2] To provide the most accurate information, please refer to the student affairs office. They can confirm the ECTS value for the Natural Language Processing course. Sources: [1], [2]",
+        "final_score": 0.591318
+      }
+    ]
+  },
+  {
+    "question": "What would I learn in Data Mining?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1], [2], [3], [4], [5] You will learn about: • Big Data Analytics Technologies • Basic Data Mining Concepts • Data Mining Tasks • Data Mining Process • Methods: association rules, kNN, clustering, decision trees, random forest, gradient boosted decision trees, support vector machines • Data Preparation: transformation, cleansing, reduction • Evaluation: train and test set, cross-validation • Text Mining: process, methods, sentiment analysis • Web Scraping Sources: [1], [2], [3], [4], [5]",
+        "final_score": 0.814289
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- You will learn about different types of data mining tasks such as association rule mining, k-nearest neighbors, clustering, decision trees, random forests, gradient boosting decision trees, support vector machines, etc. - You will gain an understanding of how to prepare data effectively through transformations, cleansing, and reduction. - You will explore evaluation techniques including train/test sets, cross-validation, and other metrics. - You will delve into text mining processes and methods like sentiment analysis. - You will learn about web scraping techniques to extract data from websites. - Sources: [1], [2], [3], [4], [5] - Additional resources: [1], [2], [3], [4], [5]",
+        "final_score": 0.773002
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "Based on the provided syllabi, here's what you would learn in Data Mining: - Understand big data analytics technologies - Grasp basic data mining concepts - Learn about data mining tasks - Familiarize with the data mining process - Study various data mining methods including association rules, kNN, clustering, decision trees, random forest, gradient boosted decision trees, and support vector machines - Acquire skills in data preparation such as transformation, cleansing, and reduction - Evaluate models using train and test sets and cross-validation - Explore text mining processes and methods, including sentiment analysis - Gain knowledge in web scraping Sources: [1], [2] xt mining. [1], [2] xt mining. [1], [2] xt mining. [1], [2] xt mining. [1], [2] xt mining. [1], [2] xt mining. [1], [2] xt mining. [1], [2] xt mining. [1], [2] xt mining. [1], [2] xt mining. [1], [2] xt",
+        "final_score": 0.821031
+      }
+    ]
+  },
+  {
+    "question": "Is this programme useful if I want to work in AI or data science?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1, 2, 3, 4, 5] Answer: The Master's program at FRI offers courses in AI, data science, and related fields, such as Applied Statistics, Artificial Intelligence, and Data Analytics. The program provides a balance between theoretical knowledge and practical skills, which can be beneficial for those interested in working in AI or data science. Sources: [1, 2, 3, 4, 5]",
+        "final_score": 0.825924
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- Yes, it is useful for those interested in AI and data science. It covers foundational topics such as algorithms, linear algebra, probability, and statistics which are essential for developing AI models and analyzing large datasets. Sources: [1], [2], [3]. - No, it does not specifically focus on AI or data science. However, it provides a solid foundation in mathematics and statistics, which are crucial for any quantitative role in these fields. Sources: [1], [2], [3]. - Sources: [1], [2], [3]. Yes, it is useful for those interested in AI and data science. It covers foundational topics such as algorithms, linear algebra, probability, and statistics which are essential for developing AI models and analyzing large datasets. Sources: [1], [2], [3]. No, it does not specifically focus on AI or data science. However, it provides a solid foundation in mathematics and statistics, which are crucial for any quantitative role in these fields. Sources: [1], [2], [3].",
+        "final_score": 0.77285
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- Yes, the programme is useful for working in AI or data science as it covers essential topics like deep learning, big data, and machine learning. - The curriculum includes practical components and emphasizes modern approaches in AI, which can enhance your understanding and skills in these areas. - The programme also offers elective courses in artificial intelligence and related fields, providing flexibility to specialize further. - It prepares students for studying abroad at TU Graz, where they can gain additional expertise in AI and data science. - Sources: Call_for_applications_2026_27_AN.pdf, _2019_brošura_2_en_WEB.pdf ```markdown - Yes, the programme is useful for working in AI or data science as it covers essential topics like deep learning, big data, and machine learning. - The curriculum includes practical components and emphasizes modern approaches in AI, which can enhance your understanding and skills in these areas. - The programme also offers elective courses in artificial intelligence and related fields, providing flexibility to specialize further. - It prepares students for studying abroad at TU Graz, where they can gain additional expertise in AI and data science. - Sources: Call_for_applications_2026_27_AN.pdf, _2019_bro",
+        "final_score": 0.81437
+      }
+    ]
+  },
+  {
+    "question": "Is Multimedia only about design and video production?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1], [2], [3], [4], [5] Answer: No, the Multimedia master's study programme is not only about design and video production. It combines knowledge of computer science and telecommunications, enabling students to perform effective planning and implementation of multimedia systems, develop software, analyse and process multimedia content, and present information visually. Sources: [1], [2], [3], [4], [5]",
+        "final_score": 0.75186
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- Yes, it includes both design and video production. - Sources: [1], [2], [3], [4], [5] - No, it does not focus solely on design and video production; it also covers multimedia content analysis and systems engineering. Sources: [1], [2], [3], [4], [5]",
+        "final_score": 0.828413
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "Based on the information provided, the Multimedia master's study programme at UL FRI includes more than just design and video production. It also covers: - Planning and implementation of multimedia systems - Development of software - Analysis and processing of multimedia content - Visual information presentation - User experience and user interface design - Multimedia terminals Sources: [1], [2], [4]",
+        "final_score": 0.6533
+      }
+    ]
+  },
+  {
+    "question": "What kind of skills would I gain from Image Based Biometry course?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "From the Image Based Biometry course, you would gain skills in: • Image processing and analysis • Biometric recognition and identification • Pattern recognition and machine learning • Statistical analysis and data interpretation Sources: [1], [2], [5]",
+        "final_score": 0.85094
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- You would learn about image processing techniques used in biometric identification. - You could enhance your programming skills through project assignments. - You might also improve your understanding of database management systems. - Sources: [1], [2] - Additional skills gained may include advanced algorithms for pattern recognition. - Sources: [1], [2] - Advanced topics in Computer Vision, including image-based biometrics. - You could apply these skills in fields such as forensic science or security systems. - Sources: [1], [2] - Digital Approximation and Randomized Algorithms, Advanced Topics in Computer Vision. - These skills could lead to roles like system architect or researcher in biometric technology. - Sources: [1], [2] - DAMJAN PJEVIĆ - Multimedia Student - Extracurricular activities and societies. - You would benefit from networking opportunities within the multimedia community. - Sources: [1], [2] - DAMJAN PJEVIĆ - Multimedia Student - Extracurricular activities and societies. - Your CV would reflect diverse experiences in multimedia applications. - Sources: [1], [2] - DAMJAN PJEVIĆ - Multimedia Student - Extracurricular activities and societies. - You would",
+        "final_score": 0.664066
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- Familiarity with biometric systems and their applications - Knowledge in image processing techniques - Understanding of biometric data analysis - Skills in developing and implementing biometric recognition algorithms - Practical experience in working with biometric datasets Sources: _2019_brošura_2_en_WEB.pdf You have the answer based on the provided context. If you need more detailed information or specific course content, it's recommended to visit the official FRI website or contact the student affairs office directly. Sources: _2019_brošura_2_en_WEB.pdf ```plaintext - Familiarity with biometric systems and their applications - Knowledge in image processing techniques - Understanding of biometric data analysis - Skills in developing and implementing biometric recognition algorithms - Practical experience in working with biometric datasets Sources: _2019_brošura_2_en_WEB.pdf ```",
+        "final_score": 0.859376
+      }
+    ]
+  },
+  {
+    "question": "Is Algorithms and Data Structures more practical or theoretical?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1, 2, 3, 4, 5] Answer: The course \"Algorithms and Data Structures\" seems to be a mix of both practical and theoretical aspects. It covers topics such as programming, data structures, and algorithms, which are essential for developing practical skills in computer science. On the other hand, it also delves into theoretical foundations, such as algorithmic complexity and optimization methods. Sources: [1, 2, 3, 4, 5]",
+        "final_score": 0.728644
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- **Practical:** Focuses on coding and problem-solving techniques. - **Theoretical:** Emphasizes understanding algorithms' efficiency and design principles. - **Sources:** [1], [2] Sources: [1], [2] To determine whether Algorithms and Data Structures is more practical or theoretical, we can look at the sources provided: - **Source 1** discusses \"Introduction to Algorithms\" by Cormen, Leiserson, Rivest, and Stein, which emphasizes both theoretical concepts like algorithmic complexity and practical applications such as sorting and searching algorithms. - **Source 2** mentions \"Data Science\" programs, which often focus on practical skills including machine learning and big data analytics. Given these sources, it appears that Algorithms and Data Structures is more practical because it covers both theoretical foundations and practical applications. Therefore, the answer is: - **Practical:** Focuses on coding and problem-solving techniques. Sources: [1], [2].",
+        "final_score": 0.576416
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "Based on the provided information, it is difficult to definitively categorize Algorithms and Data Structures as purely practical or theoretical. The content covers both theoretical aspects such as algorithmic complexity, data structures, and basic programming techniques, as well as practical applications like sorting algorithms and greedy search. Therefore, the course likely includes a mix of both practical and theoretical components. Sources: catalogue_of_knowledge_RI_2025.pdf, _2019_brošura_2_en_WEB.pdf, _2019_brošura_2_en_WEB.pdf, catalogue_of_knowledge_RI_2025.pdf, _2019_brošura_2_en_WEB.pdf, catalogue_of_knowledge_RI_2025.pdf, _2019_brošura_2_en_WEB.pdf, catalogue_of_knowledge_RI_2025.pdf, _2019_brošura_2_en_WEB.pdf, catalogue_of_knowledge_RI_2025.pdf, _2019_brošura_2_en_WEB.pdf, catalogue_of_knowledge_RI_2025.pdf, _2019_brošura_2_en_WEB.pdf,",
+        "final_score": 0.691471
+      }
+    ]
+  },
+  {
+    "question": "Can a student change the title of their diploma thesis after it has already been approved?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1, 2, 3, 4, 5] • According to the Rules on Doctoral Studies at the University of Ljubljana, if the Senate of the UL confirms a change to the doctoral dissertation topic prior to the expiration of the deadline for the submission of the final doctoral dissertation, the deadline for the submission of the doctoral dissertation that was set by the Senate of the UL during the approval of the original doctoral dissertation topic shall remain unchanged. However, there is no specific information about changing the title of a diploma thesis after approval. • The Rules on Graduate Studies at the University of Ljubljana do not provide information about changing the title of a diploma thesis after approval. Sources: [1, 2, 3, 4, 5]",
+        "final_score": 0.487448
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- No, once the title has been approved, it cannot be changed. - Sources: [1], [2], [3], [4], [5]",
+        "final_score": 0.388637
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- No, the sources do not provide specific information about changing the title of a diploma thesis after it has been approved. Typically, changes to the thesis topic require approval and might affect the submission deadline. - However, the sources indicate that extensions can be granted if the candidate cannot meet the initial deadline due to unsatisfactory achievements or failure to complete other study requirements. - It is advisable to consult the Faculty of Computer and Information Science's rules or directly contact the student affairs office for detailed guidance on such matters. Sources: [2], [4] You do not have enough information to definitively answer whether a student can change the title of their diploma thesis after it has been approved. Based on the provided context, changes to the topic generally require approval and might affect the submission deadline. For specific guidance, it would be best to consult the Faculty of Computer and Information Science's rules or contact the student affairs office. Sources: [2], [4]",
+        "final_score": 0.486342
+      }
+    ]
+  },
+  {
+    "question": "What is required if a student wants to write the diploma thesis in English instead of Slovene?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1, 2, 3, 4, 5] If a student wants to write the diploma thesis in English instead of Slovene, they must: • Submit the proposal of the dissertation and their CV in English, in accordance with Article 44 of the Rules. • If the student is a foreign national, the dissertation proposal and CV may be written only in English. • If the student is not a foreign national, they must also submit the title of the dissertation in Slovene and English, or in another foreign language in the case of the study of a foreign language. Sources: [1, 2, 3, 4, 5]",
+        "final_score": 0.64302
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- The doctoral candidate must submit the proposal of the dissertation and their CV in English, in accordance with Article 44 of these Rules. - If the doctoral candidate is a foreign national, the dissertation proposal and CV may be written only in English. - Sources: [1], [2], [3], [4], [5] Final line: Sources: [1], [2], [3], [4], [5] This response provides clear guidance based on the available sources without making assumptions about future changes or new rules. It highlights the key requirement for non-Slovene language submissions and references the relevant sources for more detailed information. This approach ensures that users seeking clarification can easily find the necessary information directly from the provided context.",
+        "final_score": 0.352323
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- The student must submit a well-founded request to the Study Committee. - The Study Committee may allow the thesis to be written in English based on the request. - The thesis must demonstrate the required knowledge and skills in the field of computer and information science. - The thesis should show the student's ability to address professional problems methodologically and their mastery of research and development methods. - The thesis must be written in accordance with the faculty's instructions on the formulation of diploma theses. - The thesis defense will likely still be conducted in Slovene unless specifically allowed by the Study Committee. Sources: 2018_March_Rules_on_Graduate_The.pdf, Rules_on_Doctoral_Studies_at_the_University_of_Ljubljana_PDF_in_force_8_June_2019_30_September_2021.pdf Note: The sources provided do not explicitly state the language of the defense for a thesis written in English. It is recommended to consult the Study Committee for specific guidance on the defense process. Sources: 2018_March_Rules_on_Graduate_The.pdf, Rules_on_Doctoral_Studies_at_the_University_of_Ljubljana_PDF_in_force",
+        "final_score": 0.552846
+      }
+    ]
+  },
+  {
+    "question": "When is a student considered to have passed an exam at FRI?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1, 2, 3, 4, 5] • A student is considered to have passed an exam at FRI when they have completed the exam and received a grade. • The exam grade is recorded in the student's record. • If a student has passed an exam but wants to improve their grade, they can request the course coordinator for a retake of the exam. • The course coordinator decides whether to allow the retake based on the circumstances. Sources: [1, 2, 3, 4, 5]",
+        "final_score": 0.485689
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- A student is considered to have passed an exam at FRI if they either receive a passing grade or choose to request a retake due to wanting to improve their grade. - Sources: [1], [2], [3], [4], [5]. Sources: [1], [2], [3], [4], [5]. - When a student has passed an exam, it means they received a passing grade or chose to request a retake. Sources: [1], [2], [3], [4], [5]. Sources: [1], [2], [3], [4], [5]. Sources: [1], [2], [3], [4], [5]. When a student has passed an exam, it means they received a passing grade or chose to request a retake. Sources: [1], [2], [3], [4], [5].",
+        "final_score": 0.236048
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- A student passes an exam at FRI when they meet the course requirements and register for the exam in time. - The passing grade range is typically from 6 to 10, where 6 is sufficient and 10 is excellent. - The exact passing criteria might vary depending on the type of exam (e.g., Bachelor's, Master's, differential). Sources: [1], [3], [5] You do not have enough information to provide a complete list of passing criteria for each type of exam. It is recommended to consult the relevant regulations or contact the student affairs office for detailed information. Sources: [1], [3], [5] You do not have enough information to provide a complete list of passing criteria for each type of exam. It is recommended to consult the relevant regulations or contact the student affairs office for detailed information. Sources: [1], [3], [5] Sources: [1], [3], [5] You do not have enough information to provide a complete list of passing criteria for each type of exam. It is recommended to consult the relevant regulations or contact the student affairs office for detailed information. Sources: [1], [3], [5] Sources: [1], [3], [5]",
+        "final_score": 0.506115
+      }
+    ]
+  },
+  {
+    "question": "What is required for a student to repeat an exam if they fail?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1, 2, 3, 4, 5] • Unless otherwise provided in the UL Statutes, students may retake an exam four times. • Repeating an exam on the grounds of a successful appeal against the exam grade does not count as retaking the exam. • It is possible to retake an exam in the same examination term, only if more than 14 days elapse between the unsuccessful exam and the retaking. • In exceptional cases, where students have a justified reason, they may request from the Committee for Study Affairs a fifth repeat (sixth time of sitting) of a course examination. • Prior to the sixth time of sitting the examination, the student must attend an interview with the course provider, who will confirm the student’s request on the prescribed form (Annex 7). • Students must submit a signed form to Student Affairs at the latest 30 days prior to the examination date. Sources: [1, 2, 3, 4, 5]",
+        "final_score": 0.757126
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- Students who have failed to pass exams may repeat them. - Unless otherwise provided in the UL Statutes, students may retake an exam four times. - Repeating an exam on the grounds of a successful appeal against the exam grade does not count as retaking the exam. - It is possible to retake an exam in the same examination term, only if more than 14 days elapse between the unsuccessful exam and the retaking. - In exceptional cases, where students have a justified reason, they may request from the Committee for Study Affairs a fifth repeat (sixth time of sitting) of a course examination. - Prior to the sixth time of sitting the examination, the student must attend an interview with the course provider, who will confirm the student’s request on the prescribed form (Annex 7). - Students must submit a signed form to Student Affairs at the latest 30 days prior to the examination date. - Sources: [1], [2], [3], [4], [5] Final answer: - Students who have failed to pass exams may repeat them. - Unless otherwise provided in the UL Statutes, students may retake an exam four times. - Repeating an exam on the grounds of a successful appeal against the exam",
+        "final_score": 0.643164
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "To repeat an exam after failing, a student must: - Ensure more than 14 days elapse between the unsuccessful exam and the retake, unless there is an exceptional, justified reason. - For a fifth retake (sixth attempt), the student must attend an interview with the course provider and submit a signed form to Student Affairs 30 days before the exam date. - If repeating a study year, each exam in that year is treated as a first-time attempt. - In extreme cases, a student can apply to the Committee for Student Affairs for a fifth retake (sixth attempt) with a valid reason. - The fourth, fifth, and sixth retakes are reviewed by a committee consisting of at least two members. Sources: [1], [2], [3], [4]",
+        "final_score": 0.834397
+      }
+    ]
+  },
+  {
+    "question": "How many times can a student typically take the same exam in one academic year?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1] [2] [3] [4] [5] According to the provided sources, a student can typically take the same exam in one academic year: • Up to four times, unless otherwise provided in the UL Statutes (Source: [2]) • In exceptional cases, a fifth repetition (sixth attempt) may be allowed, subject to a justified reason and approval by the Committee for Study Affairs (Source: [1]) • In special cases, where students have a legitimate reason, they can ask the Study Committee for a fifth repetition (sixth attempt) of the course exam (Source: [2]) • The fourth, fifth, and sixth retakes of the exam are reviewed by a committee consisting of at least two members (Source: [1]) Sources: [1] 2017_januar_FRI_Study_Rules.pdf [2] FAQ_2016_september_fri_study_rules.pdf [3] FAQ_2016_september_fri_study_rules.pdf [4] 2017_januar_FRI_Study_Rules.pdf [5] 2017_januar_FRI_Study_Rules.pdf Please note that the information provided is based on the given context and may not be exhaustive or",
+        "final_score": 0.902787
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- A student can typically take the same exam up to five times in one academic year, unless there are exceptional circumstances such as a valid reason like a justified medical condition or a successful appeal against the exam grade. - Sources: [1], [2], [3], [4], [5]. Sources: [1], [2], [3], [4], [5]. - Note: This rule applies to both undergraduate and graduate programs. For specific rules regarding different study levels, refer to the relevant sources listed above. Sources: [1], [2], [3], [4], [5].",
+        "final_score": 0.389888
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- Typically, a student can retake an exam up to four times in one academic year. - In special cases, with a legitimate reason, a student can ask for a fifth repetition. - The fourth, fifth, and potentially sixth retakes require specific procedures, including interviews and forms. - Retaking an exam within the same examination term requires more than 14 days to elapse between the unsuccessful exam and the retake. Sources: [1], [4] You do not have enough information to provide a definitive answer about the exact number of times a student can take the same exam in one academic year without considering special circumstances. Based on the provided sources, a typical student can retake an exam up to four times in one academic year, but in special cases, a fifth repetition might be granted. For the fourth, fifth, and potentially sixth retakes, specific procedures such as interviews and form submissions are required. Retaking an exam within the same examination term also requires more than 14 days to elapse between the unsuccessful exam and the retake. Sources: [1], [4] You may want to consult the student affairs office for detailed information regarding special circumstances and specific procedures. Sources: [1], [4] To get a comprehensive understanding",
+        "final_score": 0.419671
+      }
+    ]
+  },
+  {
+    "question": "What happens if a student violates exam rules during an exam?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1, 2, 3, 4, 5] • If a student leaves the exam in the middle, they will receive a failing grade. • If a student does not hand in their exam paper, they are deemed to have resigned from the exam. • If a student withdraws during the exam, they will be marked negatively. • If a student fails to take an exam, they will be marked 'no-sit'. Sources: [1, 2, 3, 4, 5]",
+        "final_score": 0.516301
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- Any candidate who leaves in the middle of the exam will be **referred** to the electronic system no later than seven working days after the exam. - Any candidate who leaves in the middle of the exam will receive a **failing grade**. - Students who believe that an examination was not evaluated in a fair way may file an appeal against the evaluation in writing with the Dean within three working days of the publication of the results. - Students who fail to hand in their exam paper after the examination are deemed to have resigned from the exam. - Students who have failed an exam may repeat the examination up to three times unless otherwise provided in the Statutes of the UL. - Retakes of an exam on the basis of a successful appeal against an examination grade are not considered a retake. - Sources: [1], [2], [3], [4], [5] - For further clarification, please refer to the relevant sources listed above. Sources: [1], [2], [3], [4], [5] Final note: Please ensure compliance with the university's study rules and guidelines. Violation of these rules may result in disciplinary action. Sources: [1], [2], [3], [4], [5]",
+        "final_score": 0.098236
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- The student will likely receive a failing grade for the exam. - The student may also face additional disciplinary actions as per the university's policies. Sources: [1], [2], [3], [4], [5] The provided context does not explicitly detail the consequences for violating exam rules. However, based on the general guidelines, a student who violates exam rules is likely to receive a failing grade for the exam and may face additional disciplinary actions as per the university's policies. Sources: [1], [2], [3], [4], [5]",
+        "final_score": 0.897015
+      }
+    ]
+  },
+  {
+    "question": "Is IŠRM path good for AI or research?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1], [2], [3], [4], [5] The Computer Science and Mathematics program is a joint program offered by the Faculty of Mathematics and Faculty of Computer and Information Science. It is designed for students with a background in computer science and mathematics. The program aims to educate students to develop new information technology and conduct research in mathematics and theoretical computer science. • The program is 2 years long, with a total of 120 ECTS credits. • The program is designed for students with a background in computer science and mathematics. • The program aims to educate students to develop new information technology and conduct research in mathematics and theoretical computer science. Sources: [2], [3], [4], [5]",
+        "final_score": 0.608767
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- Jointly offered by the Faculty of Mathematics and Faculty of Computer and Information Science. - Goal is to educate students to develop new information technology and conduct research in mathematics and theoretical computer science. - Duration is two years, totaling 120 ECTS credits. - Professional title obtained upon graduation is \"magister inženir računalništva in matematike\" or \"magistrica inženirka računalništva in matematike\". - Electives available in both mathematics and computer science fields. - Modules cover topics such as machine learning, artificial intelligence, network analysis, and more. - Specialized courses can be chosen based on interests within these areas. - General elective courses provide flexibility in choosing additional subjects. - Timetable includes specific modules and their corresponding semesters. - Brochure provides detailed study program information including modules and elective options. Sources: [1], [2], [3], [4], [5].",
+        "final_score": 0.340461
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- The Computer Science and Mathematics programme is designed for students with backgrounds in Computer Science, Mathematics, and Computer and Information Science. - It aims to equip students with skills to develop new information technologies and conduct research in mathematics and theoretical computer science. - The programme lasts for 2 years, consisting of 4 semesters, and requires a total of 120 ECTS credits. - Graduates will earn the title of magister inženir računalništva in matematike or magistrica inženirka računalništva in matematike. - The curriculum includes a variety of courses such as topics in discrete mathematics, numerical mathematics, optimization, and mathematical foundations of computer science. - Students can choose from a range of electives in both mathematics and computer science, including modules on machine learning, data analysis, and network analysis. - The programme is offered jointly by the Faculty of Mathematics and the Faculty of Computer and Information Science. Sources: [1], [2], [3] You do not have enough information to provide details about specific courses or their descriptions. For more detailed information, please contact the student affairs office. Sources: [1], [2], [3] You do not have enough information to",
+        "final_score": 0.374388
+      }
+    ]
+  },
+  {
+    "question": "What are some core subjects in the second year of the BUN RI programme?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1, 3] Answer: Unfortunately, I do not have enough information to provide a list of core subjects in the second year of the BUN RI programme. The provided sources do not contain information about the curriculum or course structure of the programme. I recommend contacting the student affairs office for more information. Sources: [1, 3]",
+        "final_score": 0.171038
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "Core Subjects: * Programming Languages * Data Structures * Algorithms * Database Systems * Operating Systems * Software Engineering * Artificial Intelligence * Web Development * Cybersecurity * Machine Learning * Human-computer Interaction * Distributed Systems * Cloud Computing * Big Data Analytics * Network Security * Digital Forensics * Game Design * User Experience Design * Project Management * Business Analysis * Lean Six Sigma * Agile Methodologies * Quality Assurance * Continuous Integration * DevOps * System Architecture * Performance Optimization * Security Testing * Enterprise Applications * Mobile Application Development * Blockchain Technology * Internet of Things (IoT) * IoT Security * Smart Cities * Autonomous Vehicles * Robotics * Embedded Systems * Quantum Computing * Cryptography * Financial Markets * Supply Chain Management * Operations Research * Decision Support Systems * Risk Management * Environmental Sustainability * Energy Storage Technologies * Renewable Energy Sources * Climate Change Adaptation * Sustainable Urban Planning * Green Building Materials * Waste Management * Circular Economy * Life Cycle Assessment * Environmental Impact Assessment * Carbon Footprint Reduction * Sustainable Transportation * Public Health *",
+        "final_score": 0.236827
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- Materials - Mechanics - German - Psychology - Computer Science - Russian - Slovene as a second language (bilingual Slovene–Hungarian general upper secondary school) - Slovene as a second language (general upper secondary school with Italian as the language of instruction in the ethnically mixed area of Slovenian Istria) - Sociology - Contemporary Dance - Spanish - Art History - History - History and Theory of Theatre and Film Sources: [2] The provided information does not specify the core subjects for the second year of the BUN RI program. Please refer to the official study rules or contact the faculty for detailed information. Sources: [1], [3] The provided information does not specify the core subjects for the second year of the BUN RI program. Please refer to the official study rules or contact the faculty for detailed information. Sources: [1], [3] You do not have enough information to determine the core subjects for the second year of the BUN RI program. It is recommended to consult the official study rules or contact the faculty directly for accurate details. Sources: [1], [3] Based on the available information, there is no specific mention of core subjects for the second year of the",
+        "final_score": 0.268183
+      }
+    ]
+  },
+  {
+    "question": "Which modules are in the BUN RI third year?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1, 2, 3, 4, 5] Answer: Unfortunately, I do not have enough information to provide a direct answer. The provided context does not specify the modules in the BUN RI third year. However, it does mention that changing an elective module in the BUN-RI or BUN-RM programme, which together constitute three courses, is considered a two-course change. Sources: [1, 2, 3, 4, 5]",
+        "final_score": 0.07073
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- Module FE A: User Experience and User Interfaces Design Multimedia Terminals - Module FE B: User Experience and User Interfaces Design Multimedia Terminals - Thematic Set FRI D: Image Based Biometry Advanced Computer Graphics Computer Based Sound Production Advanced Topics in Computer Vision User Experience and User Interfaces Design Multimedia Terminals In the second year, students first select 2 courses from one of the four thematic sets at the Faculty of Computer and Information Science. Depending on the selection of the thematic set, students must then select the appropriate module A or B at the Faculty of Electrical Engineering, as shown by the lines in the diagram. Sources: [1], [3] - Thematic Set FRI D: Image Based Biometry Advanced Computer Graphics Computer Based Sound Production Advanced Topics in Computer Vision User Experience and User Interfaces Design Multimedia Terminals In the second year, students first select 2 courses from one of the four thematic sets at the Faculty of Computer and Information Science. Depending on the selection of the thematic set, students must then select the appropriate module A or B at the Faculty of Electrical Engineering, as shown by the lines in the diagram. Sources: [1], [3]",
+        "final_score": -0.14221
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "Based on the provided information, there is no specific mention of modules for the BUN RI third year. Therefore, I recommend contacting the student affairs office for detailed information regarding the curriculum for the third year of BUN RI. Sources: [1], [2] You do not have enough information to provide a specific list of modules for the BUN RI third year. Please contact the student affairs office for detailed information regarding the curriculum for the third year of BUN RI. Sources: [1], [2]",
+        "final_score": 0.376438
+      }
+    ]
+  },
+  {
+    "question": "What course does Dejan Lavbič teach in BUN RI?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1, 2, 3, 4, 5] Answer: I do not have enough information to answer this question. The provided context does not mention Dejan Lavbič or his teaching activities in BUN RI. I recommend contacting the student affairs office for more information. Sources: [1, 2, 3, 4, 5]",
+        "final_score": 0.494761
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- Course taught by Dejan Lavbič in BUN RI is \"Introduction to Programming\" (code: 1010). - Sources: [1], [2], [3], [4], [5]. Sources: [1], [2], [3], [4], [5]. Dejan Lavbič teaches Introduction to Programming (code: 1010) in the Bachelor of Business Administration - Research Institute program (BUN-RI). Sources: [1], [2], [3], [4], [5]. Sources: [1], [2], [3], [4], [5].",
+        "final_score": 0.095082
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "The answer should be concise and practical. - The provided information does not specify which courses Dejan Lavbič teaches in the BUN RI program. - You may need to contact the student affairs office or the Department of Computer and Information Science for this specific information. Sources: [1], [2] You do not have enough information to determine which courses Dejan Lavbič teaches in the BUN RI program. You may need to contact the student affairs office or the Department of Computer and Information Science for this specific information. Sources: [1], [2]",
+        "final_score": 0.100533
+      }
+    ]
+  },
+  {
+    "question": "What mathematical or theoretical subjects are part of the curriculum?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "sentence-transformers_all-MiniLM-L6-v2",
+        "setup": "sentence-transformers_all-MiniLM-L6-v2 + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1], [2], [3], [4], [5] (if applicable). Please provide a list of mathematical or theoretical subjects that are part of the curriculum. Answer: • Logic in computer science • Computer aided geometric design • Computational geometry • Probabilistic methods in computer science • Data analysis and visualization • Topics in discrete mathematics • Topics in numerical mathematics • Topics in optimization • Topics in mathematics • Real-valued functions, derivatives, partial derivatives, gradient, optimization, integral • Analytic geometry in R^3 (vectors, scalar product, vector product, lines and planes in R^3, projections, distances) • Matrix calculus, eigenvalues, determinants, systems of linear equations • Basics of statistics and probability Sources: [1], [2], [3]",
+        "final_score": 0.796152
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- Discrete mathematics - Numerical mathematics - Optimization - Mathematical foundations of computer science - Game theory - Combinatorics - Symbolic computation - Graph theory - Computability theory - Coding theory and cryptography - Theory of programming languages - Electives in computer science - General elective - Topical research themes I - Approximation and randomized algorithms - Digital forensic - Information Security and Privacy - Interaction and Information Design - Web Information Extraction and Retrieval - Logic in computer science - Computer aided geometric design - Computational geometry - Probabilistic methods in computer science - Data analysis and visualization - Topics in discrete mathematics - Topics in numerical mathematics - Topics in optimization - Topics in mathematical foundations of computer science - Topics in game theory - Combinatorics 2 - Mathematics with computers - Optimization methods 2 - Computational complexity - Symbolic computation - Graph Theory - Computability theory - Coding theory and cryptography 2 - Theory of programming languages - Electives in computer science - General elective - Topical research themes I - Approximation and randomized algorithms - Digital forensic - Information Security and Privacy -",
+        "final_score": 0.853376
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "Based on the provided information, the following mathematical and theoretical subjects are part of the curriculum: - Topics in Discrete Mathematics - Topics in Numerical Mathematics - Topics in Optimization - Topics in Mathematical Foundations of Computer Science - Topics in Game Theory - Combinatorics - Mathematics with Computers - Optimization Methods - Computational Complexity - Symbolic Computation - Graph Theory - Computability Theory - Coding Theory and Cryptography - Theory of Programming Languages - Logic in Computer Science - Computer Aided Geometric Design - Computational Geometry - Probabilistic Methods in Computer Science - Data Analysis and Visualization - Real-valued Functions - Derivatives - Partial Derivatives - Gradient - Integral - Analytic Geometry in R^3 - Matrix Calculus - Eigenvalues - Determinants - Systems of Linear Equations - Basics of Statistics and Probability Sources: [1], [2] To get a more comprehensive list, it is recommended to review the full program documents available at the provided links. If you need further details, please contact the student affairs office. If you have any specific questions about these subjects, feel free to ask! Sources: [1",
+        "final_score": 0.868072
+      }
+    ]
+  },
+  {
+    "question": "What is the general rule about student obligations such as lectures and exercises?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1], [2], [3], [4], [5] • Student obligations for individual courses should be set in advance. • The course lecturer should ensure that they are known to students at the start of the course. • Tutorials, including regular weekly work (homework, seminars and tests), are a mandatory part of study. • Students are expected to have at least one presentation and submit five written assignments, all in accordance with their teacher's instructions. • In case of absence, students should notify their teacher. Sources: [1], [2], [3], [4], [5]",
+        "final_score": 0.752596
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- **Lectures and Exercises**: - **Regular Attendance**: Mandatory attendance is required for lectures and exercises. - **Absence Notification**: Absences need to be notified to the teacher promptly. - **Make-up Exams**: Make-up exams may be offered under certain conditions. - **Coursework Requirements**: Regularly submitting homework, seminars, and tests is mandatory. - **Recognition Exceptions**: Recognition of incomplete coursework can be granted based on prior work. - **Timetable Availability**: Timetables for specific courses like \"Slovene as a Foreign Language – Lecturer's Course\" are not public until notified via email. - **Additional Activities**: Additional activities such as presentations and writing assignments are also required. - **Disciplinary Actions**: Violations of these obligations can lead to disciplinary actions, as outlined in the Disciplinary Responsibility of Students Regulation of the University of Ljubljana. - **Sources:** [1], [2], [3], [4], [5] Sources: [1], [2], [3], [4], [5]",
+        "final_score": 0.332744
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "- Regular attendance at lectures and tutorials is required. - Students must notify their teachers in case of absence. - Tutorials, including homework, seminars, and tests, are mandatory. - Failure to complete tutorials and other continuing requirements by the end of the academic year requires repeating the tutorials the following year. - Exceptions may be made for absences due to unforeseen circumstances, subject to the course lecturer's approval. - Sources: [1], [3], [5] You do not have enough information to provide a comprehensive answer regarding all aspects of student obligations. However, based on the available sources, here are some key points: - Regular attendance at lectures and tutorials is required. - Students must notify their teachers in case of absence. - Tutorials, including homework, seminars, and tests, are mandatory. - Exceptions may be made for absences due to unforeseen circumstances, subject to the course lecturer's approval. Sources: [1], [3], [5]",
+        "final_score": 0.695895
+      }
+    ]
+  },
+  {
+    "question": "What do I actually learn in Algorithms and Data Structures?",
+    "answers": [
+      {
+        "llm_model": "meta-llama_Meta-Llama-3-8B-Instruct",
+        "embedding_model": "Qwen_Qwen3-Embedding-0.6B",
+        "setup": "Qwen_Qwen3-Embedding-0.6B + meta-llama_Meta-Llama-3-8B-Instruct",
+        "answer": "[1], [2], [5] Answer: You will learn basics of algorithmic complexity (big-O notation), data structures (list, queue, stack, set, priority queue, hash table, trees, graphs), and basic programming techniques (greedy search, divide and conquer, dynamic programming). You will also learn standard algorithms (sorting, minimum spanning tree, shortest path search, etc.). Sources: [1], [2], [5]",
+        "final_score": 0.897862
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-1.5B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + Qwen_Qwen2.5-1.5B-Instruct",
+        "answer": "- Basics of algorithmic complexity (big-O notation) - Data structures (lists, queues, stacks, sets, priority queues, hash tables, trees, graphs) - Basic programming techniques (greedy search, divide and conquer, dynamic programming) - Standard algorithms (sorting, minimum spanning tree, shortest path) - Iteration and recursion - Exception handling Sources: [1], [2], [3], [4], [5]",
+        "final_score": 0.878134
+      },
+      {
+        "llm_model": "Qwen_Qwen2.5-7B-Instruct",
+        "embedding_model": "BAAI_bge-m3",
+        "setup": "BAAI_bge-m3 + Qwen_Qwen2.5-7B-Instruct",
+        "answer": "Based on the provided context, in Algorithms and Data Structures, you will learn: - Basics of algorithmic complexity (big-O notation) - Various data structures including lists, queues, stacks, sets, priority queues, hash tables, trees, and graphs - Basic programming techniques such as greedy search, divide and conquer, and dynamic programming - Standard algorithms like sorting and minimum spanning tree Sources: [4], [5]",
+        "final_score": 0.895211
+      }
+    ]
+  }
+]

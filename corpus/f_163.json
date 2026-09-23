@@ -1,0 +1,220 @@
+{
+  "model": "typesafe-ai/jev",
+  "checked_at": "2026-09-20T10:34:01.979Z",
+  "fixture": "The same France/Paris score question, alone or with an unrelated colors question. Authored fixtures, excluded from benchmark scoring.",
+  "rows": [
+    {
+      "condition": "alone",
+      "raw_score": 8.88,
+      "confidence": 0.95,
+      "probabilities": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0.04,
+        "9": 0.96
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "latency_ms": 542,
+          "retry_after_ms": 0
+        }
+      ]
+    },
+    {
+      "condition": "batched",
+      "raw_score": 8.88,
+      "confidence": 0.95,
+      "probabilities": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0.04,
+        "9": 0.96
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "latency_ms": 326,
+          "retry_after_ms": 0
+        }
+      ]
+    },
+    {
+      "condition": "batched",
+      "raw_score": 8.88,
+      "confidence": 0.95,
+      "probabilities": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0.04,
+        "9": 0.96
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "latency_ms": 269,
+          "retry_after_ms": 0
+        }
+      ]
+    },
+    {
+      "condition": "alone",
+      "raw_score": 8.88,
+      "confidence": 0.95,
+      "probabilities": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0.04,
+        "9": 0.96
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "latency_ms": 311,
+          "retry_after_ms": 0
+        }
+      ]
+    },
+    {
+      "condition": "alone",
+      "raw_score": 8.88,
+      "confidence": 0.95,
+      "probabilities": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0.04,
+        "9": 0.96
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "latency_ms": 239,
+          "retry_after_ms": 0
+        }
+      ]
+    },
+    {
+      "condition": "batched",
+      "raw_score": 8.88,
+      "confidence": 0.95,
+      "probabilities": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0.04,
+        "9": 0.96
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "latency_ms": 210,
+          "retry_after_ms": 0
+        }
+      ]
+    },
+    {
+      "condition": "batched",
+      "raw_score": 8.87,
+      "confidence": 0.95,
+      "probabilities": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0.05,
+        "9": 0.95
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "latency_ms": 335,
+          "retry_after_ms": 0
+        }
+      ]
+    },
+    {
+      "condition": "alone",
+      "raw_score": 8.87,
+      "confidence": 0.95,
+      "probabilities": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0.05,
+        "9": 0.95
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "latency_ms": 311,
+          "retry_after_ms": 0
+        }
+      ]
+    }
+  ],
+  "alone": {
+    "min": 8.87,
+    "max": 8.88,
+    "range": 0.010000000000001563,
+    "mean": 8.8775
+  },
+  "batched": {
+    "min": 8.87,
+    "max": 8.88,
+    "range": 0.010000000000001563,
+    "mean": 8.8775
+  },
+  "scope": "Four repeats per condition on one fixture characterize observed variation. They do not establish a general batching effect or exact reproducibility."
+}

@@ -1,0 +1,416 @@
+{
+  "started_at": "2026-09-21T15:29:08.662500+00:00",
+  "provider": "openrouter",
+  "mode": "real_api",
+  "synthetic": true,
+  "executes_actions": false,
+  "automatic_retries": 0,
+  "results": [
+    {
+      "example": "skills/jev/assets/prompt-to-jev.json",
+      "sha256": "672757de7304c1656cb91ef75030f875fe953ed9b9cc5ac8921817af75c6d7a5",
+      "request": {
+        "model": "typesafe/jev-1.13",
+        "state": {
+          "ticket": {
+            "text": "I was charged twice for my subscription. Please refund the duplicate charge. I can still use the service."
+          }
+        },
+        "questions": {
+          "team": {
+            "type": "choice",
+            "instructions": "Which team should handle state.ticket.text?",
+            "criteria": {
+              "billing": "Charges, invoices, subscriptions or refunds.",
+              "access": "Login, passwords or account access.",
+              "other": "None fits, or the message is unclear."
+            }
+          },
+          "refund": {
+            "type": "noul",
+            "instructions": "Does state.ticket.text explicitly request money back?"
+          },
+          "impact": {
+            "type": "score",
+            "instructions": "How much does the issue in state.ticket.text prevent the customer from working?",
+            "criteria": [
+              "Can still use the service; no work is blocked.",
+              "Some work is disrupted, but a workaround exists.",
+              "Cannot use the service to do their work."
+            ]
+          }
+        }
+      },
+      "response": {
+        "model": "typesafe/jev-1.13-20260917",
+        "answers": {
+          "team": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "other": 0,
+              "billing": 1,
+              "access": 0
+            },
+            "confidence": 1
+          },
+          "refund": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "impact": {
+            "type": "score",
+            "score": 0,
+            "legend": {
+              "0": "Can still use the service; no work is blocked.",
+              "1": "Some work is disrupted, but a workaround exists.",
+              "2": "Cannot use the service to do their work."
+            },
+            "probabilities": {
+              "0": 1,
+              "1": 0,
+              "2": 0
+            },
+            "confidence": 1
+          }
+        },
+        "usage": {
+          "input_tokens": 464,
+          "output_tokens": 68,
+          "cost": 1.9488e-05
+        },
+        "id": "gen-dec-1790004549-H0pm9lRojIM8ZoBmmjcK",
+        "provider": "TypeSafe"
+      },
+      "decisions": {
+        "team": {
+          "status": "selected",
+          "value": "billing",
+          "probability": 1,
+          "margin": 1
+        },
+        "refund": {
+          "status": "selected",
+          "value": true,
+          "probability": 0.97
+        },
+        "impact": {
+          "status": "scored",
+          "value": 0,
+          "levels": [
+            "Can still use the service; no work is blocked.",
+            "Some work is disrupted, but a workaround exists.",
+            "Cannot use the service to do their work."
+          ]
+        }
+      },
+      "status": "valid_response",
+      "elapsed_seconds": 0.609
+    },
+    {
+      "example": "skills/jev/assets/batch-triage.json",
+      "sha256": "1e0bfa9e27b88ead48f855c8c619870412d6692330efac083dfc4fb609e62153",
+      "request": {
+        "model": "typesafe/jev-1.13",
+        "state": {
+          "goal": "Classify each support record and prioritize a review queue; do not send replies or change accounts.",
+          "policy": {
+            "categories": {
+              "billing": "Charges, invoices and refunds, including resolved payment questions.",
+              "bug": "Product failures, including sign-in errors when identity is already verified.",
+              "how_to": "Requests for instructions when no product failure is reported.",
+              "unknown": "No category fits or the supplied record is insufficient."
+            },
+            "urgency_levels": [
+              "Routine or resolved; no current blocked work is reported.",
+              "An active issue remains, but a usable workaround lets work continue.",
+              "Current work is blocked with no known workaround, requiring immediate investigation."
+            ],
+            "account_review": "Account-specific checks are needed to resolve an open issue; a closed issue with an observed resolution does not need another check."
+          },
+          "records": {
+            "ticket_104": {
+              "thread": [
+                {
+                  "role": "customer",
+                  "text": "My invoice seems to show two charges. Please investigate."
+                },
+                {
+                  "role": "support",
+                  "text": "We checked the payment receipt: one captured charge and one temporary authorization. The authorization was released."
+                },
+                {
+                  "role": "customer",
+                  "text": "Confirmed, the duplicate has disappeared. Thank you."
+                }
+              ],
+              "observations": {
+                "status": "resolved",
+                "source": "synthetic payment receipt and customer confirmation"
+              },
+              "missing_evidence": []
+            },
+            "ticket_105": {
+              "thread": [
+                {
+                  "role": "customer",
+                  "text": "Our whole team gets a server error signing in, so we cannot open the project needed for today\u2019s workshop."
+                },
+                {
+                  "role": "support",
+                  "text": "Identity is verified. Try the alternative sign-in page while we investigate."
+                },
+                {
+                  "role": "customer",
+                  "text": "Still not working. The alternative page has the same error for everyone."
+                }
+              ],
+              "observations": {
+                "status": "open",
+                "error": "HTTP 500 from both sign-in pages",
+                "workaround": "The suggested alternative failed."
+              },
+              "missing_evidence": [
+                "Server-side cause has not been investigated."
+              ]
+            }
+          }
+        },
+        "questions": {
+          "ticket_104_category": {
+            "type": "choice",
+            "instructions": "Evaluate only state.records.ticket_104, including its full thread and observations; use state.policy, not facts from another record. Which category describes this record?",
+            "criteria": {
+              "billing": "Charges, invoices and refunds, including resolved payment questions.",
+              "bug": "Product failures, including sign-in errors when identity is already verified.",
+              "how_to": "Requests for instructions when no product failure is reported.",
+              "unknown": "No category fits or the supplied record is insufficient."
+            }
+          },
+          "ticket_104_account_review": {
+            "type": "noul",
+            "instructions": "Evaluate only state.records.ticket_104, including its full thread and observations; use state.policy, not facts from another record. Does resolving the current issue still require account-specific evidence checks under state.policy.account_review?"
+          },
+          "ticket_104_urgency": {
+            "type": "score",
+            "instructions": "Evaluate only state.records.ticket_104, including its full thread and observations; use state.policy, not facts from another record. Rate current urgency, accounting for resolution and failed workarounds. Do not infer unobserved impact.",
+            "criteria": [
+              "Routine or resolved; no current blocked work is reported.",
+              "An active issue remains, but a usable workaround lets work continue.",
+              "Current work is blocked with no known workaround, requiring immediate investigation."
+            ]
+          },
+          "ticket_105_category": {
+            "type": "choice",
+            "instructions": "Evaluate only state.records.ticket_105, including its full thread and observations; use state.policy, not facts from another record. Which category describes this record?",
+            "criteria": {
+              "billing": "Charges, invoices and refunds, including resolved payment questions.",
+              "bug": "Product failures, including sign-in errors when identity is already verified.",
+              "how_to": "Requests for instructions when no product failure is reported.",
+              "unknown": "No category fits or the supplied record is insufficient."
+            }
+          },
+          "ticket_105_account_review": {
+            "type": "noul",
+            "instructions": "Evaluate only state.records.ticket_105, including its full thread and observations; use state.policy, not facts from another record. Does resolving the current issue still require account-specific evidence checks under state.policy.account_review?"
+          },
+          "ticket_105_urgency": {
+            "type": "score",
+            "instructions": "Evaluate only state.records.ticket_105, including its full thread and observations; use state.policy, not facts from another record. Rate current urgency, accounting for resolution and failed workarounds. Do not infer unobserved impact.",
+            "criteria": [
+              "Routine or resolved; no current blocked work is reported.",
+              "An active issue remains, but a usable workaround lets work continue.",
+              "Current work is blocked with no known workaround, requiring immediate investigation."
+            ]
+          }
+        }
+      },
+      "response": {
+        "model": "typesafe/jev-1.13-20260917",
+        "answers": {
+          "ticket_104_category": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "bug": 0,
+              "billing": 1,
+              "how_to": 0,
+              "unknown": 0
+            },
+            "confidence": 1
+          },
+          "ticket_104_account_review": {
+            "type": "noul",
+            "noul": 0.07
+          },
+          "ticket_104_urgency": {
+            "type": "score",
+            "score": 0,
+            "legend": {
+              "0": "Routine or resolved; no current blocked work is reported.",
+              "1": "An active issue remains, but a usable workaround lets work continue.",
+              "2": "Current work is blocked with no known workaround, requiring immediate investigation."
+            },
+            "probabilities": {
+              "0": 1,
+              "1": 0,
+              "2": 0
+            },
+            "confidence": 1
+          },
+          "ticket_105_category": {
+            "type": "choice",
+            "choice": "bug",
+            "probabilities": {
+              "bug": 1,
+              "billing": 0,
+              "how_to": 0,
+              "unknown": 0
+            },
+            "confidence": 1
+          },
+          "ticket_105_account_review": {
+            "type": "noul",
+            "noul": 0.36
+          },
+          "ticket_105_urgency": {
+            "type": "score",
+            "score": 2,
+            "legend": {
+              "0": "Routine or resolved; no current blocked work is reported.",
+              "1": "An active issue remains, but a usable workaround lets work continue.",
+              "2": "Current work is blocked with no known workaround, requiring immediate investigation."
+            },
+            "probabilities": {
+              "0": 0,
+              "1": 0,
+              "2": 1
+            },
+            "confidence": 1
+          }
+        },
+        "usage": {
+          "input_tokens": 1402,
+          "output_tokens": 184,
+          "cost": 5.8884e-05
+        },
+        "id": "gen-dec-1790004549-O7JYNHpOjJ0GkyMW2ZRp",
+        "provider": "TypeSafe"
+      },
+      "decisions": {
+        "ticket_104_category": {
+          "status": "selected",
+          "value": "billing",
+          "probability": 1,
+          "margin": 1
+        },
+        "ticket_104_account_review": {
+          "status": "selected",
+          "value": false,
+          "probability": 0.07
+        },
+        "ticket_104_urgency": {
+          "status": "scored",
+          "value": 0,
+          "levels": [
+            "Routine or resolved; no current blocked work is reported.",
+            "An active issue remains, but a usable workaround lets work continue.",
+            "Current work is blocked with no known workaround, requiring immediate investigation."
+          ]
+        },
+        "ticket_105_category": {
+          "status": "selected",
+          "value": "bug",
+          "probability": 1,
+          "margin": 1
+        },
+        "ticket_105_account_review": {
+          "status": "needs_review",
+          "value": false,
+          "probability": 0.36
+        },
+        "ticket_105_urgency": {
+          "status": "scored",
+          "value": 2,
+          "levels": [
+            "Routine or resolved; no current blocked work is reported.",
+            "An active issue remains, but a usable workaround lets work continue.",
+            "Current work is blocked with no known workaround, requiring immediate investigation."
+          ]
+        }
+      },
+      "status": "valid_response",
+      "elapsed_seconds": 0.385
+    },
+    {
+      "example": "skills/jev-act/assets/example.json",
+      "sha256": "382398c91a1c8b3aa65f43e795116c14d761609ecaa71d47cf34414cd1960f47",
+      "request": {
+        "model": "typesafe/jev-1.13",
+        "state": {
+          "snapshot_id": "demo-12",
+          "goal": "Find the cancellation policy; do not book or pay.",
+          "surface": "Synthetic booking page",
+          "elements": {
+            "e1": {
+              "role": "link",
+              "label": "Cancellation policy"
+            },
+            "e2": {
+              "role": "button",
+              "label": "Book and pay"
+            }
+          },
+          "allowed_actions": [
+            "open_policy",
+            "wait",
+            "blocked"
+          ]
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Choose an allowed next step toward goal using only the observed snapshot.",
+            "criteria": {
+              "open_policy": "Open observed link e1 to inspect the cancellation policy.",
+              "wait": "The supplied observation is incomplete or still loading.",
+              "blocked": "No allowed action can advance the goal."
+            }
+          }
+        }
+      },
+      "response": {
+        "model": "typesafe/jev-1.13-20260917",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "open_policy",
+            "probabilities": {
+              "wait": 0,
+              "blocked": 0,
+              "open_policy": 1
+            },
+            "confidence": 1
+          }
+        },
+        "usage": {
+          "input_tokens": 467,
+          "output_tokens": 40,
+          "cost": 1.9614e-05
+        },
+        "id": "gen-dec-1790004549-Pu4cRGerL3PHUHdk0rse",
+        "provider": "TypeSafe"
+      },
+      "decisions": {
+        "action": {
+          "status": "selected",
+          "value": "open_policy",
+          "probability": 1,
+          "margin": 1
+        }
+      },
+      "status": "valid_response",
+      "elapsed_seconds": 0.338
+    }
+  ]
+}

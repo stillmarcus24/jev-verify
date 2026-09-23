@@ -1,0 +1,239 @@
+{
+  "version": 2,
+  "benchmark": "decisions-v2",
+  "status": "stopped_after_errors",
+  "started_at": "2026-09-20T15:28:47.633Z",
+  "finished_at": "2026-09-20T15:28:48.554Z",
+  "model": "jev-1.13.0",
+  "source": {
+    "commit": "b9e423dbb425e8dc5f09cafa44294cd0b72058c6",
+    "relevant_worktree_modified": false,
+    "harness_sha256": "afc7b7ff0e3d22da25236580895e83e8dd1462cf6dac8aa72fc0c9b6fc2dea68",
+    "shared_harness_sha256": "9c363a7d135c9dfe97797eddb54cbb56826913dbcb9919e7bddaa03b0aeed162",
+    "fixture_sha256": "7e1b3e988c9c27eae96efd1782cb301d998204b94a09ed915bebe0ad3d97e69b",
+    "warmup_fixture_sha256": "8e3073ac4ad1fb460fe574084b40631577ece6a49e190fca2d89659cee15604c",
+    "package_sha256": "a63e63026627c5d5178496768e9642dde3e31d114225643ce4410cbb5cb932b8",
+    "runtime_source_sha256": "7f0b4fc5451677d27b0c74de1104d5757f1f3af985307662c007190ef98a6891",
+    "lockfile_sha256": "2641927e4207467ad05df6fb30afa5384d68385b8c6271576ff7bf544c9fb178"
+  },
+  "environment": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "os": "25.5.0",
+    "bun": "1.3.14",
+    "cpu": "Apple M5 Max",
+    "memory_bytes": 38654705664,
+    "native": null,
+    "weight": null,
+    "client_region": "Not independently verified",
+    "provider": "Hardware, load and caching unknown; model version provider-asserted"
+  },
+  "methodology": {
+    "unique_cases": 72,
+    "cases_per_type": 24,
+    "initial_calls": 1,
+    "warmups": 1,
+    "measured_repetitions": 3,
+    "measured_calls": 216,
+    "permutation_calls": 144,
+    "planned_calls": 362,
+    "concurrency": 1,
+    "context_tokens": null,
+    "percentile_method": "nearest rank, ceil(p*n)-1 in sorted elapsed times",
+    "request_timeout_ms": 60000,
+    "run_timeout_ms": 1200000,
+    "stop_rule": "Stop after three consecutive invalid/error responses; no retries.",
+    "latency_boundary": "HTTP dispatch through complete bounded body, including network/provider; excludes validation",
+    "throughput_boundary": "Measured loop wall time including validation, excluding report persistence and permutations.",
+    "grading": "Choice exact label. Noul >0.5 is true, <0.5 false, tie incorrect. Score unique maximum-probability level; ties incorrect; weighted-score absolute error reported separately. Failures count as incorrect.",
+    "quality_scope": "72 authored synthetic cases in nine low-risk workflow families. Fixture and labels frozen before model execution. Not a production benchmark, calibration study or independent third-party evaluation. Repeats/permutations are not independent cases.",
+    "permutations": "All six orders for each of24 choice cases. Invariance requires six valid identical semantic choices; it does not mean correct.",
+    "initial_scope": "Initial and warmup use prior forms-v1 cases, not held-out v2 cases. One initial request, not an isolated cold-machine/server measurement. Weight verification primes filesystem caches.",
+    "usage": "Actual wrapped local prompt tokens or provider-reported counters. Missing usage fails validation. Local output zero means no generated answer text; not no computation.",
+    "input_usd_per_million": 0.042,
+    "output_usd_per_million": 0,
+    "price_source": "https://docs.typesafe.ai/models",
+    "price_checked": "2026-09-20",
+    "cost_scope": "Known reported usage estimate, not invoice. All calls include warmups/permutations; unknown failed-call billing remains unknown."
+  },
+  "samples": [
+    {
+      "phase": "initial",
+      "repetition": 0,
+      "case_id": "warmup-form-01",
+      "family": "warmup-forms",
+      "type": "choice",
+      "order": [
+        "submit",
+        "correct",
+        "wait"
+      ],
+      "elapsed_ms": 510.769209,
+      "http_status": 401,
+      "valid": false,
+      "error": "http_error",
+      "response": null,
+      "expected": {
+        "type": "choice",
+        "choice": "submit"
+      },
+      "grade": {
+        "correct": false,
+        "predicted": null,
+        "score_absolute_error": null,
+        "confidence": null,
+        "tie": false
+      }
+    },
+    {
+      "phase": "warmup",
+      "repetition": 0,
+      "case_id": "warmup-form-02",
+      "family": "warmup-forms",
+      "type": "choice",
+      "order": [
+        "submit",
+        "correct",
+        "wait"
+      ],
+      "elapsed_ms": 126.54612499999996,
+      "http_status": 401,
+      "valid": false,
+      "error": "http_error",
+      "response": null,
+      "expected": {
+        "type": "choice",
+        "choice": "correct"
+      },
+      "grade": {
+        "correct": false,
+        "predicted": null,
+        "score_absolute_error": null,
+        "confidence": null,
+        "tie": false
+      }
+    },
+    {
+      "phase": "measured",
+      "repetition": 0,
+      "case_id": "inbox-routing-01",
+      "family": "inbox-routing",
+      "type": "choice",
+      "order": [
+        "finance",
+        "access",
+        "general"
+      ],
+      "elapsed_ms": 262.123875,
+      "http_status": 401,
+      "valid": false,
+      "error": "http_error",
+      "response": null,
+      "expected": {
+        "type": "choice",
+        "choice": "finance"
+      },
+      "grade": {
+        "correct": false,
+        "predicted": null,
+        "score_absolute_error": null,
+        "confidence": null,
+        "tie": false
+      }
+    }
+  ],
+  "summary": {
+    "attempted_calls": 3,
+    "skipped_calls": 359,
+    "first_pass_planned": 72,
+    "first_pass_observed": 1,
+    "first_pass_skipped": 71,
+    "first_pass_correct": 0,
+    "by_type": {
+      "choice": {
+        "planned": 24,
+        "observed": 1,
+        "skipped": 23,
+        "correct": 0,
+        "valid": 0,
+        "ties": 0
+      },
+      "noul": {
+        "planned": 24,
+        "observed": 0,
+        "skipped": 24,
+        "correct": 0,
+        "valid": 0,
+        "ties": 0
+      },
+      "score": {
+        "planned": 24,
+        "observed": 0,
+        "skipped": 24,
+        "correct": 0,
+        "valid": 0,
+        "ties": 0
+      }
+    },
+    "by_family": {
+      "inbox-routing": {
+        "observed": 1,
+        "correct": 0
+      }
+    },
+    "measured_attempts": 1,
+    "measured_valid": 0,
+    "measured_failures": 1,
+    "measured_correct": 0,
+    "p50_ms": 262.123875,
+    "p95_ms": 262.123875,
+    "p50_valid_ms": null,
+    "p95_valid_ms": null,
+    "measured_elapsed_ms": 262.139,
+    "valid_decisions_per_second": 0,
+    "first_score_mae": null,
+    "score_mae_observed": 0,
+    "permutations": {
+      "attempts": 0,
+      "valid": 0,
+      "correct": 0,
+      "ties": 0,
+      "complete_case_groups": 0,
+      "invariant_case_groups": 0,
+      "by_correct_option_position": [
+        {
+          "position": 0,
+          "observed": 0,
+          "valid": 0,
+          "correct": 0
+        },
+        {
+          "position": 1,
+          "observed": 0,
+          "valid": 0,
+          "correct": 0
+        },
+        {
+          "position": 2,
+          "observed": 0,
+          "valid": 0,
+          "correct": 0
+        }
+      ]
+    },
+    "measured_usage": {
+      "known_calls": 0,
+      "unknown_calls": 1,
+      "input_tokens": null,
+      "output_tokens": null
+    },
+    "all_usage": {
+      "known_calls": 0,
+      "unknown_calls": 3,
+      "input_tokens": null,
+      "output_tokens": null
+    },
+    "estimated_measured_input_cost_usd": null,
+    "estimated_all_input_cost_usd": null
+  }
+}
