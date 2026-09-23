@@ -1,3 +1,4 @@
 node_modules/
 corpus/
 data/harvest-*.tar.gz
+logs/
