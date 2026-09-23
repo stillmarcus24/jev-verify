@@ -95,13 +95,19 @@ reports deviation; it does not assert intent.
 Requires Node 18+. No dependencies.
 
 ```bash
-git clone https://github.com/<owner>/jev-confidence-law
+git clone https://github.com/stillmarcus24/jev-confidence-law
 cd jev-confidence-law
 node test/known-answer.cjs                       # 27 known-answer tests, must print "0 failed"
-node bin/jev-verify.cjs corpus                   # verify the bundled corpus
+bash scripts/fetch_corpus.sh                     # rebuild the corpus from data/fetched.txt
+node bin/jev-verify.cjs corpus                   # verify it
 node bin/jev-verify.cjs --repo owner/name        # verify any GitHub repo
 node bin/jev-verify.cjs path/to/file.json --json # machine-readable
 ```
+
+The corpus is not redistributed here. Every harvested file belongs to the repository that
+published it, under that project's license. `data/fetched.txt` is the manifest and
+`scripts/fetch_corpus.sh` re-fetches each file from its source, so the corpus is
+reproducible rather than copied.
 
 Exit code is `0` when every answer conforms, `1` when any deviates, `2` on error.
 
