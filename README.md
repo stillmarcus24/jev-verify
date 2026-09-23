@@ -121,7 +121,8 @@ Requires Node 18+. No dependencies.
 ```bash
 git clone https://github.com/stillmarcus24/jev-verify
 cd jev-verify
-node test/known-answer.cjs                       # 27 known-answer tests, must print "0 failed"
+node test/known-answer.cjs                       # 30 known-answer tests, must print "0 failed"
+bash test/discover-kat.sh                        # 3 law-discovery tests incl. the exclusion control
 bash scripts/fetch_corpus.sh                     # rebuild the corpus from data/fetched.txt
 node bin/jev-verify.cjs corpus                   # verify it
 node bin/jev-verify.cjs --repo owner/name        # verify any GitHub repo
@@ -160,6 +161,56 @@ both identities against the live API if you have a key.
 
 Note that `2*p_top - 1` — the form most often quoted in the ecosystem — is only the n=2 special
 case, and is correct on 26.5% of n>=3 samples.
+
+## Recovering a law nobody wrote down
+
+`scripts/recover.py` and `scripts/compat_matrix.py` both test a fixed list of six hand-written
+candidate formulas. They can only ever find a law somebody already guessed.
+
+`scripts/discover.py` searches instead. It builds nine primitive statistics of the probability
+vector — `p1 p2 pmin n invn logn H sq one` — and enumerates expressions over `+ - * /`, reporting
+any that reproduce the published field. **No composite law is in the search space**, so both
+known laws have to be assembled from primitives or they will not be found.
+
+```bash
+python3 scripts/discover.py corpus --depth 2                          # Jev
+python3 scripts/discover.py corpus-laya --depth 2                     # laya-mps
+python3 scripts/discover.py corpus-laya --depth 2 --exclude-primitive H   # the control
+bash test/discover-kat.sh                                             # all three, asserted
+```
+
+Both laws recover blind, neither supplied as a candidate:
+
+| corpus | searched | recovered | rate | n |
+|---|---|---|---|---|
+| Jev | 129,503 expressions | `(p1-invn)/(one-invn)` | 67.2% | 1,213 |
+| laya-mps | 174,977 expressions | `one-(H/logn)` | 60.6% @1e-9 | 1,085 |
+
+The Jev result is a **rediscovery, not a discovery** — that law is Yurin's, established on the live
+API and credited at the top of this file. It is here because recovering a known answer blind is how
+you find out whether the search works at all.
+
+**The control is the load-bearing test.** Remove the `H` primitive and laya's entropy law must
+become unfindable: 2.5%, `NOT RECOVERED`. A search that reports a law no matter what you take away
+from it is fitting noise, and would be worse than useless pointed at a vendor whose formula nobody
+already knows.
+
+Why an exact match is the formula rather than a fit: these are closed forms with **no free
+parameters to tune**. An expression reproducing hundreds of independent samples is not a curve
+fitted to data — it is the arithmetic that was run.
+
+**The bar scales to the corpus, and it has to.** Jev publishes probabilities at 2dp, so a ±0.005
+rounding on each input propagates; demanding 1e-9 there measures the publisher's formatting, not
+the vendor's arithmetic, and made the *correct* law read as `NOT RECOVERED` until this was fixed.
+laya-mps publishes full precision and does match at 1e-9. Override with `--tol`.
+
+One hypothesis this refuted, recorded because it was wrong and is worth not repeating: *"rounding
+is what blocks exact recovery on the Jev corpus."* It isn't — the 97 full-precision Jev rows
+recover **worse** (4.1%) than the rounded ones (22.8%), because that subset is the reimplementation
+stratum rather than cleaner data.
+
+Neither corpus is redistributed. `test/discover-kat.sh` rebuilds both from `data/fetched.txt` and
+`data/laya-fetched.txt` on first run.
 
 ## Limits
 
