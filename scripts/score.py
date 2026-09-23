@@ -3,6 +3,12 @@
 confidence a dispersion measure rather than a p_top measure?"""
 import json, glob, math
 from collections import Counter
+import os as _os
+_HERE = _os.path.dirname(_os.path.abspath(__file__))
+_ROOT = _os.path.dirname(_HERE)
+CORPUS = _os.environ.get("JEV_CORPUS", _os.path.join(_ROOT, "corpus"))
+MANIFEST = _os.environ.get("JEV_MANIFEST", _os.path.join(_ROOT, "data", MANIFEST))
+
 
 S = []
 
@@ -18,7 +24,7 @@ def walk(n):
         for v in n:
             walk(v)
 
-for f in sorted(glob.glob("/tmp/jevharvest/f_*.json")):
+for f in sorted(glob.glob(_os.path.join(CORPUS,_os.path.join(CORPUS,"f_*.json")))):
     try:
         walk(json.load(open(f)))
     except Exception:

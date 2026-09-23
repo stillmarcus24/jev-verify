@@ -2,6 +2,12 @@
 """Round 2: Noul, Score, quantisation, clamping, and cross-version law drift."""
 import json, glob, os, math
 from collections import defaultdict, Counter
+import os as _os
+_HERE = _os.path.dirname(_os.path.abspath(__file__))
+_ROOT = _os.path.dirname(_HERE)
+CORPUS = _os.environ.get("JEV_CORPUS", _os.path.join(_ROOT, "corpus"))
+MANIFEST = _os.environ.get("JEV_MANIFEST", _os.path.join(_ROOT, "data", MANIFEST))
+
 
 choice, noul, score, versions = [], [], [], Counter()
 verlink = []   # (version, kind, payload)
@@ -35,10 +41,10 @@ def walk(node, src, ver):
             walk(v, src, ver)
 
 srcmap = {}
-for line in open("fetched.txt"):
+for line in open(MANIFEST):
     i, r, p = line.strip().split("|", 2)
     srcmap[i] = f"{r}:{p}"
-for f in sorted(glob.glob("f_*.json")):
+for f in sorted(glob.glob(_os.path.join(CORPUS,"f_*.json"))):
     i = os.path.basename(f)[2:-5]
     try:
         d = json.load(open(f))

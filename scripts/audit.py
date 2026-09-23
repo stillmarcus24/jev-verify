@@ -9,6 +9,12 @@ A failure means one of: the identity is not what the ecosystem believes,
 or the published output was never produced by Jev.
 """
 import json, os, glob, sys
+import os as _os
+_HERE = _os.path.dirname(_os.path.abspath(__file__))
+_ROOT = _os.path.dirname(_HERE)
+CORPUS = _os.environ.get("JEV_CORPUS", _os.path.join(_ROOT, "corpus"))
+MANIFEST = _os.environ.get("JEV_MANIFEST", _os.path.join(_ROOT, "data", MANIFEST))
+
 
 TOL_SUM  = 0.011   # allow 2-dp rounding across up to ~4 buckets
 TOL_CONF = 0.011
@@ -34,11 +40,11 @@ def walk(node, path, src):
             walk(v, f"{path}[{i}]", src)
 
 srcmap = {}
-for line in open("/tmp/jevharvest/fetched.txt"):
+for line in open(MANIFEST):
     idx, repo, p = line.strip().split("|", 2)
     srcmap[idx] = f"{repo}:{p}"
 
-for f in sorted(glob.glob("/tmp/jevharvest/f_*.json")):
+for f in sorted(glob.glob(_os.path.join(CORPUS,_os.path.join(CORPUS,"f_*.json")))):
     idx = os.path.basename(f)[2:-5]
     try:
         d = json.load(open(f))
