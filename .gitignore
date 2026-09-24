@@ -5,3 +5,4 @@ logs/
 corpus-laya/
 corpus-logprobs/
 .venv-parquet/
+state/leaderboard-dupes.jsonl
