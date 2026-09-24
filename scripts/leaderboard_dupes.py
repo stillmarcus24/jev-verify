@@ -24,14 +24,14 @@ could in principle be a coincidence; 4,688 identical floats cannot.
 
 Reads only published artifacts. No model is run. Resumable.
 
-  python3 scripts/leaderboard_dupes.py --rows /tmp/lb_rows.pkl
+  python3 scripts/leaderboard_dupes.py          # fetches the board itself
 """
 import collections, hashlib, io, json, os, pickle, sys, urllib.parse, urllib.request
 
 def opt(f, d):
     return sys.argv[sys.argv.index(f) + 1] if f in sys.argv else d
 
-ROWS = opt("--rows", "/tmp/lb_rows.pkl")
+ROWS = opt("--rows", "")     # empty = fetch the board from HF (see board_rows)
 OUT  = opt("--out", "state/leaderboard-dupes.jsonl")
 UA   = {"user-agent": "stillos-dupes"}
 T    = ["ARC", "HellaSwag", "MMLU", "TruthfulQA", "Winogrande", "GSM8K"]
@@ -74,11 +74,32 @@ def logprob_hash(model, cache={}):
     cache[model] = h
     return h
 
+def board_rows():
+    """The 7,260 leaderboard entries, fetched from HF rather than a local file.
+
+    This previously defaulted to a pickle in /tmp that only existed on the
+    machine that built it -- so the published script ran for its author and was
+    unrunnable for everyone else. Fetching makes it self-contained.
+    """
+    if ROWS:
+        return pickle.load(open(ROWS, "rb"))
+    import io
+    import pyarrow.parquet as pq
+    ds = "open-llm-leaderboard-old/contents"
+    tree = api(f"datasets/{ds}/tree/main?recursive=1")
+    f = next(x["path"] for x in tree
+             if x["type"] == "file" and x["path"].endswith(".parquet"))
+    raw = urllib.request.urlopen(urllib.request.Request(
+        f"https://huggingface.co/datasets/{ds}/resolve/main/{urllib.parse.quote(f)}",
+        headers=UA), timeout=300).read()
+    return pq.read_table(io.BytesIO(raw)).to_pylist()
+
+
 def name(r):
     return r.get("fullname") or r.get("eval_name") or ""
 
 def main():
-    rows = pickle.load(open(ROWS, "rb"))
+    rows = board_rows()
     ok = [r for r in rows if all(isinstance(r.get(t), (int, float)) for t in T)]
     sig = collections.defaultdict(list)
     for r in ok:
